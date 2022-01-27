@@ -43,7 +43,7 @@ export default {
       formOK: false,
       rules: {
         id: [
-          v => !!v || 'Required',
+          v => !!v ||    'Required',
           v => v < 5 || 'Too long'
           // !! zadano
         ]
