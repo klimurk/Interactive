@@ -1,25 +1,24 @@
 <template>
-    <v-card>
-      <v-card-title>{{ title }}</v-card-title>
-      <v-card-text>
-        <v-form v-model="formOK" >
-          <v-text-field
-            label="Solo"
-            :placeholder="title.toString()"
-            solo
-            v-model="idModel"
-            :rules="rules.id"
-            class="textfeld"
-
-          ></v-text-field>
-        </v-form>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn :disabled="!formOK" @click="$emit('submit',idModel)" color="primary" style="color: blue">
-          Confirm
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+  <v-card>
+    <v-card-title>{{ title }}</v-card-title>
+    <v-card-text>
+      <v-form v-model="formOK">
+        <v-text-field
+          v-model="idModel"
+          label="Solo"
+          :placeholder="title.toString()"
+          :rules="rules.id"
+          solo
+          class="textfeld"
+        />
+      </v-form>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn :disabled="!formOK" color="primary" style="color: blue" @click="$emit('submit',idModel)">
+        Confirm
+      </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>

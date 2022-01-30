@@ -1,0 +1,37 @@
+$width_phoneVer:320px;
+$width_phoneHor:480px;
+$width_iPadVer: 600px;
+$width_iPadHor: 800px;
+$width_tablet: 1024px;
+$width_phone: 1280px;
+$width_fullhd: 1920px;
+$width_adaptive: $width_tablet;
+
+
+$backgroundColor1: #020202;
+$backgroundColor2: #0D1522;
+$btncolor1: #1CB0FF;
+$btncolor2: #0A87FA;
+$footerColor1: #0F162F;
+$footerColor2: #0E141E;
+$headerColor2: #1A202C;
+$headerColor1: #6A6868;
+$textColor1:#fff;
+
+
+$margin_horizontal_device: 50px;
+$margin_horizontal_phone: 10px;
+
+$margin_vertical_blocks: 50px;
+
+$h1FS:64/1920*100vw;
+$h2FS:48/1920*100vw;
+$h3FS:40/1920*100vw;
+$h4FS:36/1920*100vw;
+$h5FS:24/1920*100vw;
+$h6FS:18/1920*100vw;
+$h7FS:14/1920*100vw;
+
+
+$transition_time:.2s;
+$transition_anim_type: ease-in;

@@ -1,0 +1,11 @@
+@import url('~/assets/scss/abstracts/_functions.scss');
+@import url('~/assets/scss/abstracts/_mixins.scss');
+@import url('~/assets/scss/abstracts/_placeholders.scss');
+@import url('~/assets/scss/abstracts/_variables.scss');
+
+@import url(~/assets/scss/pages/mainPage/_main.scss);
+.mainPage_block1{
+        padding: 30px;
+        border-radius: 40px;
+    }
+

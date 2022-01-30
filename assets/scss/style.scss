@@ -1,0 +1,15 @@
+/*
+Theme Name: Interactive
+Theme URI: https://wordpress.org/themes/Interactive/
+Author: klimurk
+Author URI: https://github.com/klimurk/
+
+*/
+
+@import "abstracts/functions","abstracts/mixins","abstracts/placeholders","abstracts/variables" ;
+@import "base/animations","base/reset","base/typography";
+@import "components/buttons","components/carousel","components/cover","components/dropdown";
+@import "layout/navigation","layout/grid","layout/header","layout/footer","layout/sidebar","layout/forms";
+// @import "pages/page";
+
+

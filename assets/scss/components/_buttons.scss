@@ -1,0 +1,33 @@
+.btn_nav{
+    margin: 0 22/1920*100vw;
+    height: fit-content;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: 'Manrope', sans-serif;
+    font-size: $h7FS;
+    line-height: 19/14*100%;
+    font-weight: 600;
+    color: #fff;
+    transition: $transition_time linear;
+    text-align: center;;
+    &:hover{
+        color:#1CB0FF ;
+        cursor: pointer;
+    }
+}
+
+.btn_blue{
+    border-radius: 10px;
+    background: linear-gradient(180deg, #1CB0FF 0%, #0A87FA 100%);
+    transition: box-shadow $transition_time linear, color $transition_time linear;
+    &:hover{
+        color: $textColor1;
+        cursor: pointer;
+        box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+    }
+}
+
+.btn_reg{
+    padding: 15px 33px;
+}
