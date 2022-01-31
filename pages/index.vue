@@ -89,6 +89,17 @@
           </p>
         </div> -->
       </div>
+      <div class="mainPage_block4">
+        <div v-for="item in datablock4.items" :key="item.id"  class="mainPage_block4_item">
+          <p class="title" @click="setCount(item.id)">
+            {{ item.hasOwnProperty('symbol')? item.symbol:'' }}
+            {{ item.count | addComma }}
+          </p>
+          <p class="text">
+            {{ item.text }}
+          </p>
+        </div>
+      </div>
       <!-- <form-card title="nazvanie" :id.sync="id" @submit="func"></form-card> -->
     </div>
   </div>
@@ -96,7 +107,13 @@
 
 <script>
 export default {
+  buildModules: ['nuxt-animejs'],
   name: 'IndexPage',
+  filters: {
+    addComma (val) {
+      return val.toLocaleString()
+    }
+  },
   layout: 'error',
   // components: {
   //   formCard: () => import('~/components/card')
@@ -129,7 +146,31 @@ export default {
           title: 'Продвижение',
           text: 'Для частных инвесторов портфели будут прибыльным инструментом пассивного дохода. Мы ведем прозрачную работу, при которой наши эксперты выбирают самые выгодные варианты инвестирования в различных сферах. За счет того, что холдинг работает с большими объемами - для инвестора снижается риск, ведь его средства инвестируются в сотни или тысячи ценных бумаг или других активов.  /r  /r Для активных трейдеров, мы можем выделить удобство нашего терминала и возможность совмещения счетов с пассивными и активными доходами. Мы получаем котировки напрямую от ведущих европейских банков, что позволяет существенно улучшить качество работы с нашей платформой. '
         }
-      ]
+      ],
+      datablock4:
+      {
+        items: [
+          {
+            id: 0,
+            value: 3754,
+            count: 0,
+            text: 'подписанных контрактов за последний месяц'
+          },
+          {
+            id: 1,
+            symbol: '$',
+            value: 13681062,
+            count: 0,
+            text: 'объем выходящих транзакций'
+          },
+          {
+            id: 2,
+            value: 17780641,
+            count: 0,
+            text: 'заключено сделок на платформе'
+          }
+        ]
+      }
     }
   },
   computed: {
@@ -151,10 +192,21 @@ export default {
     this.$dark = false
   },
   mounted () {
-    console.log('mounted')
   },
   methods: {
-
+    setCount (idx) {
+      const obj = { n: this.datablock4.items[idx].count }
+      this.$anime({
+        targets: obj,
+        n: this.datablock4.items[idx].value,
+        round: 1,
+        duration: 700,
+        easing: 'easeInOutSine',
+        update: () => {
+          this.datablock4.items[idx].count = obj.n
+        }
+      })
+    }
   }
 }
 </script>
@@ -220,27 +272,24 @@ export default {
     &_item{
       flex:auto;
       z-index: 1;
-        position: relative;
-        border-bottom: 4px #14161B solid ;
-        &::after{
-          // opacity: 0;
-          display: none;
-          transition: all $transition_time !important ;
-        }
+      position: relative;
+      border-bottom: 4px #14161B solid ;
+      transition: display $transition_time !important ;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      &:hover{
-        &::after{
-          display: block;
-          // opacity:1;
-          filter: blur(64px);
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          content: '';
-        }
+      &::after{
+        opacity: 0;
+        transition: opacity $transition_time linear !important ;
+        filter: blur(64px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        content: '';
+      }
+      &:hover::after{
+        opacity: 1;
       }
       & .title{
         font-weight: 600;
@@ -256,20 +305,19 @@ export default {
     }
 
     .dataBlock3{
-      &_b1:hover::after{
+      &_b1::after{
         background: linear-gradient(315deg, rgba(22, 25, 32, 0) 62.32%, #1E232E 69.95%, rgba(34, 53, 111, 0.56) 77.2%, rgba(16, 151, 187, 0.61) 88.43%, rgba(0, 255, 224, 0.92) 94.54%, rgba(0, 255, 224, 0.53) 97.75%);
       }
-      &_b2:hover::after{
+      &_b2::after{
         background: linear-gradient(142deg, rgba(22, 25, 32, 0) 54.13%, rgba(30, 35, 46, 0.58) 64.18%, rgba(34, 53, 111, 0.6) 71.44%, rgba(16, 151, 187, 0.68) 80.68%, rgba(11, 182, 198, 0.774518) 83.61%, #00FFE0 90.59%);
       }
-      &_b3:hover::after{
+      &_b3::after{
         background: linear-gradient(15deg, rgba(22, 25, 32, 0) 54.43%, #1E232E 71.89%, rgba(34, 53, 111, 0.56) 82.42%, rgba(16, 151, 187, 0.61) 89%, rgba(0, 255, 224, 0.92) 97.09%, rgba(0, 255, 224, 0.53) 101.34%);
       }
-      &_b4:hover::after{
-        background: linear-gradient(204.67deg, rgba(22, 25, 32, 0) 41.66%, #1E232E 59.64%, rgba(34, 53, 111, 0.56) 70.48%, rgba(16, 151, 187, 0.61) 77.26%, rgba(0, 255, 224, 0.92) 85.59%, rgba(0, 255, 224, 0.53) 89.96%);
+      &_b4::after{
+        background-image: linear-gradient(204.67deg, rgba(22, 25, 32, 0) 41.66%, #1E232E 59.64%, rgba(34, 53, 111, 0.56) 70.48%, rgba(16, 151, 187, 0.61) 77.26%, rgba(0, 255, 224, 0.92) 85.59%, rgba(0, 255, 224, 0.53) 89.96%);
       }
     }
-
     .wide {
       min-width:1125.5/1920*100%;
       border-right: 4px #14161B solid ;
@@ -293,6 +341,35 @@ export default {
       background-size: cover;
       background-position-y: bottom;
     }
+  }
+  &_block4{
+    @include makeitflex(row, space-between);
+    background-image: url('~/assets/images/pages/Main/block4/background.svg');
+    background-size: contain;
+    height: 584px;
+    width: 100%;
+    margin-bottom: 80px;
+    padding: 307px 200px 0;
+    &_item{
+      text-align: center;
+      flex:1;
+      height: fit-content;
+      .title{
+        font-weight: bold;
+        font-size: $h1FS !important ;
+        line-height: 87/64*1;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+      }
+      .text{
+        font-weight: 500;
+        font-size: $h5FS;
+        line-height: 33/24*1;
+        font-feature-settings: 'pnum' on, 'lnum' on;
+        max-width: 67%;
+        margin: 0 auto;
+      }
+    }
+
   }
 }
 //  @import url('~/assets/scss/pages/mainPage/_block1.scss');
