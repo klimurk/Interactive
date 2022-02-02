@@ -15,7 +15,11 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  // GitHubPages
+  target: 'static',
+  router: {
+    base: '/Interactive/'
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],

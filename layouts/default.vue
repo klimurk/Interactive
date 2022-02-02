@@ -228,7 +228,8 @@ export default {
     margin: 0;
 }
 .theme--dark.v-application{
-   background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
+  //  background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
+    background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
     font-family: 'Manrope', sans-serif;
     font-size: 16px;
     line-height: 22.5/18*100%;
@@ -237,7 +238,8 @@ export default {
 }
 .v-application--wrap{
 
-    background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
+    // background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
+    background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
     font-family: 'Manrope', sans-serif;
     font-weight: normal;
 
