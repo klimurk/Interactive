@@ -5790,6 +5790,7 @@ export default {
         font-size: $h7FS;
         line-height: 135%;
         text-align: center;
+        text-align: center;
         letter-spacing: 0.05em;
         text-transform: uppercase;
         &>p{
