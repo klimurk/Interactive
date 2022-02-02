@@ -5484,12 +5484,12 @@ export default {
   },
   watch: {
     id (value) {
-      console.log(value)
+      // console.log(value)
     },
     customer: {
       deep: true,
       handler (obj) {
-        console.log(obj)
+        // console.log(obj)
       }
     }
   },
@@ -5808,7 +5808,7 @@ export default {
         &:hover{
           &>p{
              background: -webkit-linear-gradient(90deg, #1293B2 10.29%, #03EEDA 26.32%, #00FFE0 86.19%, #1198B4 100%),linear-gradient(0deg, #FFFFFF, #FFFFFF);
-            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
           }
           & .squareHover{
