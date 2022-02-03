@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <header class="header">
-      <a class="header_logo" href="<?= get_home_url(); ?>">
+      <NuxtLink class="header_logo" to="/">
         <svg viewBox="0 0 89 52">
           <circle cx="26" cy="26" r="26" />
           <path
@@ -9,18 +9,29 @@
           />
         </svg>
         <p>Lorem ipsum</p>
-      </a>
+      </NuxtLink>
       <div class="header_nav">
-        <a class="btn_nav transparent">Типы счетов</a>
-        <a class="btn_nav transparent">Портфели</a>
-        <a class="btn_nav transparent">О нас</a>
-        <a class="btn_nav transparent">Обучение</a>
-        <a class="btn_nav transparent">Аналитика</a>
-        <a class="btn_nav transparent">Контакты</a>
-        <a class="btn_nav transparent">Документы</a>
-        <a class="btn_nav transparent">RU</a>
-        <a class="btn_nav transparent">Вход</a>
-        <a class="btn_nav btn_blue btn_reg">Регистрация</a>
+        <NuxtLink
+          v-for="link in header.links"
+          :key="link.link"
+          :to="link.link"
+          class="btn_nav transparent"
+        >
+          {{ link.name }}
+        </NuxtLink>
+        <!-- <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" />
+        <NuxtLink to="/" class="btn_nav transparent" /> -->
+        <button to="/" class="btn_nav transparent">
+          {{ header.lang }}
+        </button>
+        <a class="btn_nav btn_blue btn_reg">
+          {{ header.registration }}
+        </a>
       </div>
     </header>
     <!-- nav left -->
@@ -197,6 +208,50 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      header: {
+        links: [
+          {
+            name: 'Типы счетов',
+            link: 'accountstype'
+          },
+          {
+            name: 'Портфели',
+            link: ''
+          },
+          {
+            name:
+            'О нас',
+            link: ''
+          },
+          {
+            name:
+            'Обучение',
+            link: ''
+          },
+          {
+            name:
+            'Аналитика',
+            link: ''
+          },
+          {
+            name:
+            'Контакты',
+            link: ''
+          },
+          {
+            name:
+            'Документы',
+            link: ''
+          },
+          {
+            name:
+            'Вход',
+            link: ''
+          }
+        ],
+        lang: 'RU',
+        registration: 'Регистрация'
+      },
       items: [
         {
           icon: 'mdi-apps',
