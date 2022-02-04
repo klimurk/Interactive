@@ -1,0 +1,29 @@
+<template>
+  <svg viewBox="0 0 40 32" fill="none" class="">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M35.2189 0H3.91321C1.76094 0 0.0195661 1.76094 0.0195661 3.91321L0 27.3925C0 29.5447 1.76094 31.3057 3.91321 31.3057H35.2189C37.3712 31.3057 39.1321 29.5447 39.1321 27.3925V3.91321C39.1321 1.76094 37.3712 0 35.2189 0ZM3.91325 7.82642L19.5661 17.6095L35.2189 7.82642V27.3925H3.91325V7.82642ZM3.91325 3.9132L19.5661 13.6962L35.2189 3.9132H3.91325Z" fill="url(#paint0_linear_393_405)"/>
+    <defs>
+      <linearGradient
+        id="paint0_linear_393_405"
+        x1="20"
+        y1="-26.6667"
+        x2="16.2904"
+        y2="30.1111"
+        gradientUnits="userSpaceOnUse">
+        <stop offset="0.137331" stop-color="#161920" stop-opacity="0" />
+        <stop offset="0.375" stop-color="#1E232E" stop-opacity="0.58" />
+        <stop offset="0.546875" stop-color="#22356F" stop-opacity="0.6" />
+        <stop offset="0.765625" stop-color="#1097BB" stop-opacity="0.68" />
+        <stop offset="1" stop-color="#00FFE0" />
+      </linearGradient>
+    </defs>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: 'SVGMail'
+}
+</script>
+
+<style scoped>
+</style>

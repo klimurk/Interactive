@@ -193,7 +193,7 @@ export default {
     }
     &_block{
       background: linear-gradient(107.15deg, rgba(29, 30, 32, 0.93) 0%, rgba(13, 21, 34, 0.93) 100%);
-      box-shadow: inset 0px 0px 24px rgba(13, 15, 18, 0.8);
+      // box-shadow: inset 0px 0px 24px rgba(13, 15, 18, 0.8);
       border-radius: 40px;
       margin: 50px 40px;
       padding: 33px;
@@ -202,7 +202,24 @@ export default {
       border: solid 2px #171B21;
       box-shadow: inset 0px 0px 24px #000000;
       @include makeitflex(row,center);
-      &:hover{
+      position: relative;
+      z-index: 1;
+      & ::after{
+        opacity: 0;
+        border-radius: 40px;
+        background-image: url('~/assets/images/pages/AccountsType/block_hover.svg');
+        transition: opacity $transition_time linear !important ;
+        // filter: blur(64px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        content: '';
+      }
+      & :hover ::after{
+        opacity: 1;
       }
       &_col{
         margin: 0 20px;

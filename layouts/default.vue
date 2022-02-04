@@ -19,13 +19,6 @@
         >
           {{ link.name }}
         </NuxtLink>
-        <!-- <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" />
-        <NuxtLink to="/" class="btn_nav transparent" /> -->
         <button to="/" class="btn_nav transparent">
           {{ header.lang }}
         </button>
@@ -98,7 +91,7 @@
     </v-navigation-drawer> -->
     <!-- footer  -->
     <!-- <v-footer :absolute="!fixed" app> -->
-    <div class="footer">
+    <v-footer class="footer">
       <div class="footer_col">
         <div class="footer_logo">
           Logo
@@ -150,12 +143,11 @@
           Меню
         </div>
         <ul class="footer_menu_list">
-          <li><a href="">Главная</a></li>
-          <li><a href="">Аналитика</a></li>
-          <li><a href="">Типы счетов</a></li>
-          <li><a href="">О нас</a></li>
-          <li><a href="">Контакты</a></li>
-          <li><a href="">Документация</a></li>
+          <li v-for="link in footer.links" :key="link.name">
+            <NuxtLink :to="link.link">
+              {{ link.name }}
+            </NuxtLink>
+          </li>
         </ul>
       </div>
       <div class="footer_col">
@@ -193,7 +185,7 @@
           действующего законодательства.
         </p>
       </div>
-    </div>
+    </v-footer>
     <!-- </v-footer> -->
     <!-- left nav -->
     <!-- ------- -->
@@ -219,33 +211,57 @@ export default {
             link: ''
           },
           {
-            name:
-            'О нас',
+            name: 'О нас',
             link: ''
           },
           {
-            name:
-            'Обучение',
+            name: 'Обучение',
             link: ''
           },
           {
-            name:
-            'Аналитика',
+            name: 'Аналитика',
             link: ''
           },
           {
-            name:
-            'Контакты',
+            name: 'Контакты',
+            link: 'contacts'
+          },
+          {
+            name: 'Документы',
             link: ''
           },
           {
-            name:
-            'Документы',
+            name: 'Вход',
+            link: ''
+          }
+        ],
+        lang: 'RU',
+        registration: 'Регистрация'
+      },
+      footer: {
+        links: [
+          {
+            name: 'Главная',
+            link: '/'
+          },
+          {
+            name: 'Аналитика',
             link: ''
           },
           {
-            name:
-            'Вход',
+            name: 'Типы счетов',
+            link: 'accountstype'
+          },
+          {
+            name: 'О нас',
+            link: ''
+          },
+          {
+            name: 'Контакты',
+            link: 'contacts'
+          },
+          {
+            name: 'Документы',
             link: ''
           }
         ],
@@ -283,7 +299,6 @@ export default {
     margin: 0;
 }
 .theme--dark.v-application{
-  //  background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
     background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
     font-family: 'Manrope', sans-serif;
     font-size: 16px;
@@ -293,7 +308,6 @@ export default {
 }
 .v-application--wrap{
 
-    // background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
     background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
     font-family: 'Manrope', sans-serif;
     font-weight: normal;
@@ -301,7 +315,144 @@ export default {
     @include makeitflex(column, flex-start);
     min-height: 100vh;
 }
-@import url('~/assets/scss/layout/_header.scss');
-@import url('~/assets/scss/layout/_footer.scss');
+.header {
+    @include makeitflex(row, space-between);
+    z-index: 1000;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 60px);
+
+    align-items: center;
+    border: 1px solid;
+    border-radius: 25px;
+    background: rgba(208, 208, 208, 0.2);
+    height: 109px;
+    width: 1762/1920*100%;
+    backdrop-filter: blur(5px);
+    border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+    &_logo {
+        @include makeitflex(row, flex-start);
+        align-items: center;
+        height: 61px;
+        padding: 37px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-style: normal;
+        font-family: 'Manrope', sans-serif;
+        font-size: $h5FS;
+        font-weight: bold;
+        color: #E2E3E3;
+        cursor: pointer;
+        transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
+        fill:#E2E3E3;
+        &:hover{
+            color: #1CB0FF;
+            cursor: pointer;
+            fill: #1CB0FF;
+            >svg{
+                >circle{
+                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+                }
+                >path{
+                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+                }
+            }
+        }
+        >svg{
+            margin-right: 20px;
+            height: 52/1920*100vw;
+        }
+        >p{
+            cursor: pointer;
+        }
+    }
+    &_nav{
+        @include makeitflex(row, flex-start);
+        align-items: center;
+    }
+
+}
+
+.footer {
+    @include makeitflex(row, space-between);
+    margin-top: auto;
+    border-radius: 40px;
+    background: linear-gradient(357.58deg, #0F162F -2.27%, #0E141E 93.92%);
+    padding: 65/1920*100vw 45/1920*100vw 65/1920*100vw 90/1920*100vw;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: $h7FS;
+    font-weight: 600;
+    color: $textColor1;
+    align-items: normal;
+
+    backdrop-filter: blur(24px);
+    fill:$textColor1;
+    &_col{
+        @include makeitflex(column, space-between);
+        max-width: 978/1920*100vw;
+        >p{
+        letter-spacing: 0px;
+        line-height: 20/16*100%;
+        font-weight: 600;
+
+        }
+    }
+    &_logo{
+
+    }
+    &_img{
+
+    }
+    &_contacts{
+        @include makeitflex(column,flex-start);
+        &_item{
+
+            @include makeitflex(row,flex-start);
+            align-items: center;
+            margin-top: 30px;
+            transition: fill $transition_time linear, color $transition_time linear;
+            >svg{
+                margin-right: 25px;
+                width: 30px;
+                fill: $textColor1;
+            }
+            >a{
+
+                text-decoration: none;
+                color: $textColor1;
+            }
+            &:hover{
+                >svg,>a{
+                    color: #1CB0FF;
+                    fill: #1CB0FF;
+                }
+            }
+        }
+    }
+    &_menu{
+        text-transform: uppercase;
+        font-size: $h5FS;
+        font-weight: 700;
+        &_list{
+            list-style: disc !important;
+            >li{
+                margin-top: 35px;
+                >a{
+                    transition: fill $transition_time linear, color $transition_time linear;
+                    text-decoration: none;
+                    color: $textColor1;
+                    &:hover{
+                        color: #1CB0FF;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    &_img{
+
+    }
+}
 
 </style>
