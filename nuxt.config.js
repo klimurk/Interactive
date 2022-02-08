@@ -20,6 +20,9 @@ export default {
   router: {
     base: '/Interactive/'
   },
+  generate: {
+    subFolders: true
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
