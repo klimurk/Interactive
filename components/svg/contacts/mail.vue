@@ -26,4 +26,8 @@ export default {
 </script>
 
 <style scoped>
+  svg{
+    height: 35px;
+    width: auto;
+  }
 </style>

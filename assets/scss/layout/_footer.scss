@@ -1,84 +1,82 @@
-@import url('~/assets/scss/abstracts/_functions.scss');
 @import url('~/assets/scss/abstracts/_mixins.scss');
-@import url('~/assets/scss/abstracts/_placeholders.scss');
 @import url('~/assets/scss/abstracts/_variables.scss');
-.footer {
-    @include makeitflex(row, space-between);
-    margin-top: auto;
-    border-radius: 40px;
-    background: linear-gradient(357.58deg, #0F162F -2.27%, #0E141E 93.92%);
-    padding: 65/1920*100vw 45/1920*100vw 65/1920*100vw 90/1920*100vw;
-    text-decoration: none;
-    font-family: 'Manrope', sans-serif;
-    font-size: $h7FS;
-    font-weight: 600;
-    color: $textColor1;
+// .footer {
+//     @include makeitflex(row, space-between);
+//     margin-top: auto;
+//     border-radius: 40px;
+//     background: linear-gradient(357.58deg, #0F162F -2.27%, #0E141E 93.92%);
+//     padding: 65/1920*100vw 45/1920*100vw 65/1920*100vw 90/1920*100vw;
+//     text-decoration: none;
+//     font-family: 'Manrope', sans-serif;
+//     font-size: $h7FS;
+//     font-weight: 600;
+//     color: $textColor1;
 
-    backdrop-filter: blur(24px);
-    fill:$textColor1;
-    &_col{
-        @include makeitflex(column, space-between);
-        max-width: 978/1920*100vw;
-        >p{
-        letter-spacing: 0px;
-        line-height: 20/16*100%;
-        font-weight: 600;
+//     backdrop-filter: blur(24px);
+//     fill:$textColor1;
+//     &_col{
+//         @include makeitflex(column, space-between);
+//         max-width: 978/1920*100vw;
+//         >p{
+//         letter-spacing: 0px;
+//         line-height: 20/16*100%;
+//         font-weight: 600;
 
-        }
-    }
-    &_logo{
+//         }
+//     }
+//     &_logo{
 
-    }
-    &_img{
+//     }
+//     &_img{
 
-    }
-    &_contacts{
-        @include makeitflex(column,flex-start);
-        &_item{
+//     }
+//     &_contacts{
+//         @include makeitflex(column,flex-start);
+//         &_item{
 
-            @include makeitflex(row,flex-start);
-            align-items: center;
-            margin-top: 30px;
-            transition: fill $transition_time linear, color $transition_time linear;
-            >svg{
-                margin-right: 25px;
-                width: 30px;
-                fill: $textColor1;
-            }
-            >a{
+//             @include makeitflex(row,flex-start);
+//             align-items: center;
+//             margin-top: 30px;
+//             transition: fill $transition_time linear, color $transition_time linear;
+//             >svg{
+//                 margin-right: 25px;
+//                 width: 30px;
+//                 fill: $textColor1;
+//             }
+//             >a{
 
-                text-decoration: none;
-                color: $textColor1;
-            }
-            &:hover{
-                >svg,>a{
-                    color: #1CB0FF;
-                    fill: #1CB0FF;
-                }
-            }
-        }
-    }
-    &_menu{
-        text-transform: uppercase;
-        font-size: $h5FS;
-        font-weight: 700;
-        &_list{
-            list-style: disc !important;
-            >li{
-                margin-top: 35px;
-                >a{
-                    transition: fill $transition_time linear, color $transition_time linear;
-                    text-decoration: none;
-                    color: $textColor1;
-                    &:hover{
-                        color: #1CB0FF;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
-    &_img{
+//                 text-decoration: none;
+//                 color: $textColor1;
+//             }
+//             &:hover{
+//                 >svg,>a{
+//                     color: #1CB0FF;
+//                     fill: #1CB0FF;
+//                 }
+//             }
+//         }
+//     }
+//     &_menu{
+//         text-transform: uppercase;
+//         font-size: $h5FS;
+//         font-weight: 700;
+//         &_list{
+//             list-style: disc !important;
+//             >li{
+//                 margin-top: 35px;
+//                 >a{
+//                     transition: fill $transition_time linear, color $transition_time linear;
+//                     text-decoration: none;
+//                     color: $textColor1;
+//                     &:hover{
+//                         color: #1CB0FF;
+//                         cursor: pointer;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     &_img{
 
-    }
-}
+//     }
+// }

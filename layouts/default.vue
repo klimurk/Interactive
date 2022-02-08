@@ -99,7 +99,7 @@
         <div class="footer_img">
           <v-img
             contain
-            lazy-src="/assets/images/footer/freecassa.png"
+            :lazy-src="require('~/assets/images/footer/freecassa.png')"
             max-height="60"
             max-width="170"
             :src="require('~/assets/images/footer/freecassa.png')"
@@ -208,11 +208,11 @@ export default {
           },
           {
             name: 'Портфели',
-            link: ''
+            link: 'portfolio/'
           },
           {
             name: 'О нас',
-            link: ''
+            link: 'aboutUs'
           },
           {
             name: 'Обучение',
@@ -228,7 +228,7 @@ export default {
           },
           {
             name: 'Документы',
-            link: ''
+            link: 'documents'
           },
           {
             name: 'Вход',
@@ -254,7 +254,7 @@ export default {
           },
           {
             name: 'О нас',
-            link: ''
+            link: 'aboutUs'
           },
           {
             name: 'Контакты',
@@ -262,7 +262,7 @@ export default {
           },
           {
             name: 'Документы',
-            link: ''
+            link: 'documents'
           }
         ],
         lang: 'RU',
@@ -290,86 +290,87 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import url('~/assets/scss/abstracts/_placeholders.scss');
 @import url('~/assets/scss/abstracts/_variables.scss');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .container{
   max-width: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 .theme--dark.v-application{
-    background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    line-height: 22.5/18*100%;
-    font-weight: normal;
-    color: $textColor1;
+  background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 22.5/18*100%;
+  font-weight: normal;
+  color: $textColor1;
 }
 .v-application--wrap{
 
-    background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
-    font-family: 'Manrope', sans-serif;
-    font-weight: normal;
+  background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
+  font-family: 'Manrope', sans-serif;
+  font-weight: normal;
 
-    @include makeitflex(column, flex-start);
-    min-height: 100vh;
+  @include makeitflex(column, flex-start);
+  min-height: 100vh;
 }
 .header {
-    @include makeitflex(row, space-between);
-    z-index: 1000;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 60px);
+  @include makeitflex(row, space-between);
+  z-index: 1000;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 60px);
 
+  align-items: center;
+  border: 1px solid;
+  border-radius: 25px;
+  background: rgba(208, 208, 208, 0.2);
+  height: 109px;
+  width: 1762/1920*100%;
+  backdrop-filter: blur(5px);
+  border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+  &_logo {
+    @include makeitflex(row, flex-start);
     align-items: center;
-    border: 1px solid;
-    border-radius: 25px;
-    background: rgba(208, 208, 208, 0.2);
-    height: 109px;
-    width: 1762/1920*100%;
-    backdrop-filter: blur(5px);
-    border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
-    &_logo {
-        @include makeitflex(row, flex-start);
-        align-items: center;
-        height: 61px;
-        padding: 37px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-style: normal;
-        font-family: 'Manrope', sans-serif;
-        font-size: $h5FS;
-        font-weight: bold;
-        color: #E2E3E3;
-        cursor: pointer;
-        transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
-        fill:#E2E3E3;
-        &:hover{
-            color: #1CB0FF;
-            cursor: pointer;
-            fill: #1CB0FF;
-            >svg{
-                >circle{
-                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
-                }
-                >path{
-                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
-                }
-            }
+    height: 61px;
+    padding: 37px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: 'Manrope', sans-serif;
+    font-size: $h5FS;
+    font-weight: bold;
+    color: #E2E3E3;
+    cursor: pointer;
+    transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
+    fill:#E2E3E3;
+    &:hover{
+      color: #1CB0FF;
+      cursor: pointer;
+      fill: #1CB0FF;
+      >svg{
+        >circle{
+            box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
-        >svg{
-            margin-right: 20px;
-            height: 52/1920*100vw;
+        >path{
+            box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
-        >p{
-            cursor: pointer;
-        }
+      }
     }
-    &_nav{
-        @include makeitflex(row, flex-start);
-        align-items: center;
+    >svg{
+      margin-right: 20px;
+      height: 52/1920*100vw;
     }
+    >p{
+      cursor: pointer;
+    }
+  }
+  &_nav{
+      @include makeitflex(row, flex-start);
+      align-items: center;
+  }
 
 }
 
@@ -398,12 +399,6 @@ export default {
 
         }
     }
-    &_logo{
-
-    }
-    &_img{
-
-    }
     &_contacts{
         @include makeitflex(column,flex-start);
         &_item{
@@ -431,27 +426,24 @@ export default {
         }
     }
     &_menu{
-        text-transform: uppercase;
-        font-size: $h5FS;
-        font-weight: 700;
-        &_list{
-            list-style: disc !important;
-            >li{
-                margin-top: 35px;
-                >a{
-                    transition: fill $transition_time linear, color $transition_time linear;
-                    text-decoration: none;
-                    color: $textColor1;
-                    &:hover{
-                        color: #1CB0FF;
-                        cursor: pointer;
-                    }
-                }
+      text-transform: uppercase;
+      font-size: $h5FS;
+      font-weight: 700;
+      &_list{
+        list-style: disc !important;
+        >li{
+          margin-top: 35px;
+          >a{
+            transition: fill $transition_time linear, color $transition_time linear;
+            text-decoration: none;
+            color: $textColor1;
+            &:hover{
+                color: #1CB0FF;
+                cursor: pointer;
             }
+          }
         }
-    }
-    &_img{
-
+      }
     }
 }
 

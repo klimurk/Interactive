@@ -1,64 +1,62 @@
 
-@import url('~/assets/scss/abstracts/_functions.scss');
 @import url('~/assets/scss/abstracts/_mixins.scss');
-@import url('~/assets/scss/abstracts/_placeholders.scss');
 @import url('~/assets/scss/abstracts/_variables.scss');
-.header {
-    @include makeitflex(row, space-between);
-    z-index: 1000;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 60px);
+// .header {
+//   @include makeitflex(row, space-between);
+//   z-index: 1000;
+//   position: fixed;
+//   left: 50%;
+//   transform: translate(-50%, 60px);
 
-    align-items: center;
-    border: 1px solid;
-    border-radius: 25px;
-    background: rgba(208, 208, 208, 0.2);
-    height: 109px;
-    width: 1762/1920*100%;
-    backdrop-filter: blur(5px);
-    border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
-    &_logo {
-        @include makeitflex(row, flex-start);
-        align-items: center;
-        height: 61px;
-        padding: 37px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-style: normal;
-        font-family: 'Manrope', sans-serif;
-        font-size: $h5FS;
-        font-weight: bold;
-        color: #E2E3E3;
-        cursor: pointer;
-        transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
-        fill:#E2E3E3;
-        &:hover{
-            color: #1CB0FF;
-            cursor: pointer;
-            fill: #1CB0FF;
-            >svg{
-                >circle{
-                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
-                }
-                >path{
-                    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
-                }
-            }
-        }
-        >svg{
-            margin-right: 20px;
-            height: 52/1920*100vw;
-        }
-        >p{
-            cursor: pointer;
-        }
-    }
-    &_nav{
-        @include makeitflex(row, flex-start);
-        align-items: center;
-    }
+//   align-items: center;
+//   border: 1px solid;
+//   border-radius: 25px;
+//   background: rgba(208, 208, 208, 0.2);
+//   height: 109px;
+//   width: 1762/1920*100%;
+//   backdrop-filter: blur(5px);
+//   border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+//   &_logo {
+//       @include makeitflex(row, flex-start);
+//       align-items: center;
+//       height: 61px;
+//       padding: 37px;
+//       text-decoration: none;
+//       text-transform: uppercase;
+//       font-style: normal;
+//       font-family: 'Manrope', sans-serif;
+//       font-size: $h5FS;
+//       font-weight: bold;
+//       color: #E2E3E3;
+//       cursor: pointer;
+//       transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
+//       fill:#E2E3E3;
+//       &:hover{
+//           color: #1CB0FF;
+//           cursor: pointer;
+//           fill: #1CB0FF;
+//           >svg{
+//               >circle{
+//                   box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+//               }
+//               >path{
+//                   box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+//               }
+//           }
+//       }
+//       >svg{
+//           margin-right: 20px;
+//           height: 52/1920*100vw;
+//       }
+//       >p{
+//           cursor: pointer;
+//       }
+//   }
+//   &_nav{
+//       @include makeitflex(row, flex-start);
+//       align-items: center;
+//   }
 
-}
+// }
 
 

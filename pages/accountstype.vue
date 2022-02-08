@@ -2,15 +2,16 @@
   <div>
     <div class="accPage">
       <v-img
+        class="pageImgHead"
         lazy-src="/assets/images/pages/AccountsType/head.png"
         :src="require('/assets/images/pages/AccountsType/head.png')"
         width="96%"
         alt=""
       />
-      <p class="title">
+      <p class="textTitle">
         {{ datablock.title }}
       </p>
-      <p class="text">
+      <p class="text textSubtitle">
         {{ datablock.text }}
       </p>
       <div v-for="block in datablock.blocks" :key="block.colPrice.price" class="accPage_block">
@@ -172,22 +173,7 @@ export default {
       border-radius: 40px;
       margin: 30px auto 65px;
     }
-    & .title{
-      font-family: 'Manrope', sans-serif !important;
-      font-style: normal;
-      font-weight: 800 !important;
-      font-size: $h2FS !important;
-      text-align: center;
-      letter-spacing: 0.05em !important;
-    }
     & .text{
-      font-family: 'Manrope', sans-serif !important;
-      font-style: normal;
-      font-weight: 700 !important;
-      font-size: $h5FS !important;
-      // line-height: 100% !important;
-      text-align: center;
-      letter-spacing: 0.05em !important;
       max-width: 1075/1920*100vw;
       margin: 25px auto 0;
     }
