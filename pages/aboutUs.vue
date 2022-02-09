@@ -33,7 +33,7 @@
           </p>
         </div>
         <div class="aboutUsPage_block1_svg_cubes">
-          <v-img :lazy-src="require('~/assets/images/pages/AboutUs/block1/cubes.svg')" :src="require('~/assets/images/pages/AboutUs/block1/cubes.svg')" alt="" max-height="43vw" max-width="100vw" />
+          <v-img :lazy-src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')" :src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')" alt="" max-height="43vw" max-width="100vw" />
         </div>
         <div id="svg_blocks" class="aboutUsPage_block1_svg_blocks">
           <div class="aboutUsPage_block1_svg_blocks_col">
@@ -1274,7 +1274,7 @@
             {{ datablock2.soros }}
           </p>
         </div>
-        <v-img max-height="30vw" lazy-src="/assets/images/pages/AboutUs/block2/soros.png" :src="require('~/assets/images/pages/AboutUs/block2/soros.png')" />
+        <v-img max-height="30vw" lazy-src="/assets/images/sheets/AboutUs/block2/soros.png" :src="require('~/assets/images/sheets/AboutUs/block2/soros.png')" />
         <div class="aboutUsPage_block2_col">
           <div class="citation">
             {{ datablock2.text }}
@@ -1297,10 +1297,10 @@
               {{ datablock3.block[0].text }}
             </p>
           </div>
-          <v-img lazy-src="/assets/images/pages/AboutUs/block3/photoSmall.png" :src="require('~/assets/images/pages/AboutUs/block3/photoSmall.png')" />
+          <v-img lazy-src="/assets/images/sheets/AboutUs/block3/photoSmall.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoSmall.png')" />
         </div>
         <div class="aboutUsPage_block3_col">
-          <v-img lazy-src="/assets/images/pages/AboutUs/block3/photoBig.png" :src="require('~/assets/images/pages/AboutUs/block3/photoBig.png')" />
+          <v-img lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
         </div>
         <div class="aboutUsPage_block3_col">
           <div class="aboutUsPage_block3_col_block">
@@ -1490,7 +1490,7 @@ export default {
   .aboutUsPage{
     &_block1{
       @include makeitflex(column, flex-start);
-      background-image: url('~/assets/images/pages/AboutUs/block1/background.svg');
+      background-image: url('~/assets/images/sheets/AboutUs/block1/background.svg');
       background-size: contain;
       padding: 100px 40px 70px;
       margin-top: 190px;
@@ -1502,7 +1502,7 @@ export default {
           font-style: normal !important;
           font-weight: bold !important;
           font-size: $h2FS !important;
-          line-height: 100% !important;
+          line-height: 1 !important;
 
           letter-spacing: 0.05em;
           margin-bottom: 45px;
@@ -1512,7 +1512,7 @@ export default {
           font-style: normal;
           font-weight: normal;
           font-size: $h5FS;
-          line-height: 125%;
+          line-height: 1.25;
           /* or 30px */
 
           letter-spacing: 0.05em;
@@ -1558,7 +1558,7 @@ export default {
               font-style: normal !important;
               font-weight: 600 !important;
               font-size: $h4FS !important;
-              line-height: 49/36*100% !important;
+              line-height: 49/36*1 !important;
               font-feature-settings: 'pnum' on, 'lnum' on;
               background: linear-gradient(176.05deg, #FFFFFF 34.22%, #00FDDF 101.54%, #29649B 121.84%);
               background-clip: text;
@@ -1578,7 +1578,7 @@ export default {
     }
     &_block2{
       @include makeitflex(row, space-between);
-      background-image: url('~/assets/images/pages/AboutUs/block2/background.svg');
+      background-image: url('~/assets/images/sheets/AboutUs/block2/background.svg');
       background-size: cover;
       background-position-y: bottom;
       padding: 0 120/1920*100vw;
@@ -1591,7 +1591,7 @@ export default {
           font-style: normal !important;
           font-weight: 800 !important;
           font-size: $h2FS !important;
-          line-height: 140%;
+          line-height: 1.4;
         }
         & .citation{
           position: relative;
@@ -1599,7 +1599,7 @@ export default {
           font-style: normal !important;
           font-weight: bold !important;
           font-size: $h4FS !important;
-          line-height: 140%;
+          line-height: 1.4;
           width: 600/1920*100vw;
           /* or 50px */
           text-align: right;
@@ -1644,7 +1644,7 @@ export default {
             font-style: normal !important;
             font-weight: bold !important;
             font-size: $h2FS  !important;
-            line-height: 100%;
+            line-height: 1;
             /* or 47px */
 
             letter-spacing: 0.05em;
@@ -1656,7 +1656,7 @@ export default {
             font-style: normal !important;
             font-weight: 500 !important;
             font-size: $h5FS  !important;
-            line-height: 100%;
+            line-height: 1;
             /* or 23px */
 
             letter-spacing: 0.05em;

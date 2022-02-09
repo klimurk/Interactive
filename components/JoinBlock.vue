@@ -1151,7 +1151,7 @@ export default {
     &_anim{
       @include makeitflex(column, center);
       margin-top: 130px;
-      background-image: url('~/assets/images/pages/Main/block6/background1.svg');
+      background-image: url('~/assets/images/sheets/Main/block6/background1.svg');
       background-size: cover;
       background-position-y: top;
       background-position-x: center;
@@ -1165,7 +1165,7 @@ export default {
         height: 240/1920*100vw;
         font-weight: 600;
         font-size: $h7FS;
-        line-height: 135%;
+        line-height: 1.35;
         text-align: center;
         text-align: center;
         letter-spacing: 0.05em;

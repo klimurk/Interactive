@@ -3,8 +3,8 @@
     <div class="documentsPage">
       <v-img
         class="pageImgHead"
-        :lazy-src="require('~/assets/images/pages/Documents/head.png')"
-        :src="require('~/assets/images/pages/Documents/head.png')"
+        :lazy-src="require('~/assets/images/sheets/Documents/head.png')"
+        :src="require('~/assets/images/sheets/Documents/head.png')"
         width="96%"
         alt=""
       />

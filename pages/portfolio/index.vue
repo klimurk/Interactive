@@ -3,8 +3,8 @@
     <div class="portfolioPage">
       <v-img
         class="pageImgHead"
-        :lazy-src="require('~/assets/images/pages/portfolio/index/head.png')"
-        :src="require('~/assets/images/pages/portfolio/index/head.png')"
+        :lazy-src="require('~/assets/images/sheets/portfolio/index/head.png')"
+        :src="require('~/assets/images/sheets/portfolio/index/head.png')"
         width="96%"
         alt=""
       />
@@ -45,6 +45,7 @@ export default {
   components: {
     // joinblock: () => import('~/components/joinBlock')
   },
+  layout: 'error',
   data () {
     return {
       title: 'Инвестиционные портфели для получения пассивного дохода',
@@ -53,22 +54,22 @@ export default {
         {
           name: 'ФАРМАЦЕ́ВТИКА',
           benefits: ['От $100, 000', 'Доходность 7-12%', 'От 1 года'],
-          imgUrl: 'portfolio/index/preview1.png'
+          imgUrl: 'preview1.png'
         },
         {
           name: 'Недвижимость',
           benefits: ['От $150, 000', 'Доходность 9-14%', 'От 2 лет'],
-          imgUrl: 'portfolio/index/preview2.png'
+          imgUrl: 'preview2.png'
         },
         {
           name: 'IT технологии',
           benefits: ['От  $200, 000', 'Доходность 11-17%', 'От 3 лет'],
-          imgUrl: 'portfolio/index/preview3.png'
+          imgUrl: 'preview3.png'
         },
         {
           name: 'Криптовалюты',
           benefits: ['От $300, 000', 'Доходность 19-25%', 'От 2,5 лет'],
-          imgUrl: 'portfolio/index/preview4.png'
+          imgUrl: 'preview4.png'
         }
       ]
 
@@ -85,7 +86,7 @@ export default {
   },
   methods: {
     getImgUrl (pic) {
-      return require('~/assets/images/pages/' + pic)
+      return require('~/assets/images/sheets/portfolio/index/' + pic)
     }
   }
 }
@@ -98,7 +99,7 @@ export default {
       font-style: normal !important;
       font-weight: 800 !important;
       font-size: $h2FS !important;
-      line-height: 100%;
+      line-height: 1;
       /* or 48px */
 
       text-align: center;
@@ -171,7 +172,7 @@ export default {
             &>ul>li{
               font-weight: normal;
               font-size: $h7FS;
-              line-height: 24/14*100%;
+              line-height: 24/14*1;
             }
             & .item_btn{
               padding: 15/1920*100vw 40/1920*100vw;

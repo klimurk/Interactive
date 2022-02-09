@@ -19,7 +19,7 @@
         >
           {{ link.name }}
         </NuxtLink>
-        <button to="/" class="btn_nav transparent">
+        <button class="btn_nav transparent">
           {{ header.lang }}
         </button>
         <a class="btn_nav btn_blue btn_reg">
@@ -204,15 +204,15 @@ export default {
         links: [
           {
             name: 'Типы счетов',
-            link: 'accountstype'
+            link: '/accountstype'
           },
           {
             name: 'Портфели',
-            link: 'portfolio/'
+            link: '/portfolio'
           },
           {
             name: 'О нас',
-            link: 'aboutUs'
+            link: '/aboutUs'
           },
           {
             name: 'Обучение',
@@ -224,11 +224,11 @@ export default {
           },
           {
             name: 'Контакты',
-            link: 'contacts'
+            link: '/contacts'
           },
           {
             name: 'Документы',
-            link: 'documents'
+            link: '/documents'
           },
           {
             name: 'Вход',
@@ -250,19 +250,19 @@ export default {
           },
           {
             name: 'Типы счетов',
-            link: 'accountstype'
+            link: '/accountstype'
           },
           {
             name: 'О нас',
-            link: 'aboutUs'
+            link: '/aboutUs'
           },
           {
             name: 'Контакты',
-            link: 'contacts'
+            link: '/contacts'
           },
           {
             name: 'Документы',
-            link: 'documents'
+            link: '/documents'
           }
         ],
         lang: 'RU',
@@ -303,7 +303,7 @@ export default {
   background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
-  line-height: 22.5/18*100%;
+  line-height: 22.5/18*1;
   font-weight: normal;
   color: $textColor1;
 }
@@ -394,7 +394,7 @@ export default {
         max-width: 978/1920*100vw;
         >p{
         letter-spacing: 0px;
-        line-height: 20/16*100%;
+        line-height: 20/16*1;
         font-weight: 600;
 
         }

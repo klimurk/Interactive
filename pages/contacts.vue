@@ -3,8 +3,8 @@
     <div class="contactsPage">
       <v-img
         class="pageImgHead"
-        :lazy-src="require('~/assets/images/pages/Contacts/head.png')"
-        :src="require('~/assets/images/pages/Contacts/head.png')"
+        :lazy-src="require('~/assets/images/sheets/Contacts/head.png')"
+        :src="require('~/assets/images/sheets/Contacts/head.png')"
         width="96%"
         alt=""
       />
@@ -255,7 +255,7 @@ export default {
             font-style: normal !important;
             font-weight: 500 !important;
             font-size: $h6FS !important;
-            line-height: 130.5%;
+            line-height: 1.3;
           }
         }
         & >button{

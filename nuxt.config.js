@@ -17,12 +17,13 @@ export default {
   },
   // GitHubPages
   target: 'static',
+  ssr: true,
   router: {
     base: '/Interactive/'
   },
-  generate: {
-    subFolders: true
-  },
+  // generate: {
+  //   subFolders: false
+  // },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -62,7 +63,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'ru'
     }
   },
 

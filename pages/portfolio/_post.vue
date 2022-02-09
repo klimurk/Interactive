@@ -1,15 +1,16 @@
 <template>
   <div>
+    text text tex
   </div>
 </template>
 
 <script>
 export default {
-  name: 'PortfolioPage'
-
+  // buildModules: ['nuxt-animejs'],
+  name: 'PortfolisssPage'
 }
-</script>
 
+</script>
 <style lang="scss" scoped>
 
 </style>

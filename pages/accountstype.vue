@@ -3,8 +3,8 @@
     <div class="accPage">
       <v-img
         class="pageImgHead"
-        lazy-src="/assets/images/pages/AccountsType/head.png"
-        :src="require('/assets/images/pages/AccountsType/head.png')"
+        lazy-src="/assets/images/sheets/AccountsType/head.png"
+        :src="require('/assets/images/sheets/AccountsType/head.png')"
         width="96%"
         alt=""
       />
@@ -193,7 +193,7 @@ export default {
       & ::after{
         opacity: 0;
         border-radius: 40px;
-        background-image: url('~/assets/images/pages/AccountsType/block_hover.svg');
+        background-image: url('~/assets/images/sheets/AccountsType/block_hover.svg');
         background-size: cover;
         transition: opacity $transition_time linear !important ;
         // filter: blur(64px);

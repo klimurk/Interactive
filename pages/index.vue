@@ -39,8 +39,8 @@
         </p>
         <v-img
           id="block3_full"
-          lazy-src="/assets/images/pages/Main/block3/full.png"
-          :src="require('/assets/images/pages/Main/block3/full.png')"
+          lazy-src="/assets/images/sheets/Main/block3/full.png"
+          :src="require('/assets/images/sheets/Main/block3/full.png')"
           width="74vw"
           alt=""
           class="full"
@@ -48,8 +48,8 @@
         <v-img
           v-for="image in datablock3.images"
           :key="image.path"
-          :lazy-src="`/assets/images/pages/Main/block3/${image.path}`"
-          :src="require(`/assets/images/pages/Main/block3/${image.path}` )"
+          :lazy-src="`/assets/images/sheets/Main/block3/${image.path}`"
+          :src="require(`/assets/images/sheets/Main/block3/${image.path}` )"
           aspect-ratio="12.365"
           width="74vw"
           height="0,05989vw"
@@ -465,7 +465,7 @@ export default {
     .wide {
       min-width:1125.5/1920*100%;
       border-right: 4px #14161B solid ;
-      background-image: url('~/assets/images/pages/Main/block4/col1.svg');
+      background-image: url('~/assets/images/sheets/Main/block4/col1.svg');
       & .mainPage_block4_item{
         padding: 50px 118px;
       }
@@ -473,7 +473,7 @@ export default {
     .tall {
       min-width: 617/1920*100%;
       border-left: 4px #14161B solid ;
-      background-image: url('~/assets/images/pages/Main/block4/col3.svg');
+      background-image: url('~/assets/images/sheets/Main/block4/col3.svg');
       & .mainPage_block4_item{
         padding: 40px 30px;
       }
@@ -481,14 +481,14 @@ export default {
     .middle{
       width:100%;
       border-bottom: 4px #14161B solid ;
-      background-image: url('~/assets/images/pages/Main/block4/col2.svg');
+      background-image: url('~/assets/images/sheets/Main/block4/col2.svg');
       background-size: cover;
       background-position-y: bottom;
     }
   }
   &_block5{
     @include makeitflex(row, space-between);
-    background-image: url('~/assets/images/pages/Main/block5/background.svg');
+    background-image: url('~/assets/images/sheets/Main/block5/background.svg');
     background-size: contain;
     height: 584px;
     width: 100%;
@@ -552,6 +552,6 @@ export default {
     };
   }
 }
-//  @import url('~/assets/scss/pages/mainPage/_block1.scss');
-  // @import url('~/assets/scss/pages/mainPage/_main.scss');
+//  @import url('~/assets/scss/sheets/mainPage/_block1.scss');
+  // @import url('~/assets/scss/sheets/mainPage/_main.scss');
 </style>
