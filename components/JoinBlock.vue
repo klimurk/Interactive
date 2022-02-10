@@ -1148,6 +1148,7 @@ export default {
 <style lang="scss" scoped>
   .joinBlock{
     text-align: center;
+    margin-bottom: 20vw;;
     &_anim{
       @include makeitflex(column, center);
       margin-top: 130px;
