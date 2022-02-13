@@ -1152,7 +1152,7 @@ export default {
 
     &_anim{
       @include makeitflex(column, center);
-      margin-top: 130px;
+      margin-top: 130/1920*100vw;
       background-image: url('~/assets/images/sheets/Main/block6/background1.svg');
       background-size: cover;
       background-position-y: top;
