@@ -1148,11 +1148,8 @@ export default {
 <style lang="scss" scoped>
   .joinBlock{
     text-align: center;
-<<<<<<< HEAD
     margin-bottom: 300/1920*100vw;
-=======
-    margin-bottom: 20vw;;
->>>>>>> 9a4e81fb04e20434c7172f7e8646fa79ad002705
+
     &_anim{
       @include makeitflex(column, center);
       margin-top: 130px;
