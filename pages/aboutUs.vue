@@ -1281,7 +1281,7 @@
             <svg class="svg_citation_1" viewBox="0 0 48 33">
               <path d="M20.2232 32.0088L34.611 0.00878906H47.5L37.3686 32.0088H20.2232ZM0.5 32.0088L15.0676 0.00878906H27.9566L17.7054 32.0088H0.5Z" fill="#00FDDF" />
             </svg>
-            <svg class="svg_citation_2" viewBox="0 0 47 34" >
+            <svg class="svg_citation_2" viewBox="0 0 47 34">
               <path d="M19.5434 33.3438L29.7946 0.34375H47L32.4324 33.3438H19.5434ZM0 33.3438L10.1314 0.34375H27.2768L12.889 33.3438H0Z" fill="#00FDDF" />
             </svg>
           </div>

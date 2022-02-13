@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <header class="header">
+    <header v-click-outside="nav_reset" class="header">
       <NuxtLink class="header_logo" to="/">
         <svg viewBox="0 0 89 52">
           <circle cx="26" cy="26" r="26" />
@@ -11,14 +11,56 @@
         <p>Lorem ipsum</p>
       </NuxtLink>
       <div class="header_nav">
-        <NuxtLink
-          v-for="link in header.links"
-          :key="link.link"
-          :to="link.link"
-          class="btn_nav transparent"
-        >
-          {{ link.name }}
-        </NuxtLink>
+        <ul class="header_nav_lvl0">
+          <li v-for="link0 in header.linksLvl0" :key="link0.name">
+            <NuxtLink
+              v-if="link0.link !=''"
+              :to="link0.link"
+              class="btn_nav transparent"
+            >
+              {{ link0.name }}
+            </NuxtLink>
+            <button
+              v-if="link0.link ==''"
+              class="btn_nav transparent link_lvl0"
+              @click="navLvl0_click(link0); link0.linksLvl1IsOpen = !link0.linksLvl1IsOpen"
+            >
+              {{ link0.name }} >
+              <!-- @click="navLvl0_click(link0.linksLvl1IsOpen)" -->
+            </button>
+            <ul v-if="link0.linkcount >0" class="header_nav_lvl1" :class="{ visible:link0.linksLvl1IsOpen }">
+              <li v-for="link1 in link0.linksLvl1" :key="link1.name" class="link">
+                <a
+                  v-if="link1.link !=''"
+                  :to="link1.link"
+                  class="btn_nav  link_lvl1"
+                  @click.prevent="openPage(link0.linkParent + link1.link)"
+                >
+                  {{ link1.name }}
+                </a>
+                <button
+                  v-if="link1.link ==''"
+                  class="btn_nav transparent link_lvl1"
+                  @click="navLvl1_click(link1); link1.linksLvl2IsOpen=!link1.linksLvl2IsOpen"
+                >
+                  {{ link1.name }} >
+                </button>
+                <ul v-if="link0.linkcount>1" class="header_nav_lvl2" :class="{ visible:link1.linksLvl2IsOpen }">
+                  <li v-for="link2 in link1.linksLvl2" :key="link2.name" class="link">
+                    <a
+                      v-if="link2.link !=''"
+                      :to="link2.link"
+                      class="btn_nav  link_lvl2"
+                      @click.prevent="openPage(link0.linkParent + link1.linkParent + link2.link)"
+                    >
+                      {{ link2.name }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
         <button class="btn_nav transparent">
           {{ header.lang }}
         </button>
@@ -27,70 +69,11 @@
         </a>
       </div>
     </header>
-    <!-- nav left -->
-    <!-- <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer> -->
-    <!-- ---------------------------- -->
-    <!-- <v-app-bar color="#" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar> -->
-    <!-- ================================= -->
-    <!-- main part ======================= -->
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <!-- ==================================  -->
-    <!-- rigth nav -->
-    <!-- <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer> -->
-    <!-- footer  -->
-    <!-- <v-footer :absolute="!fixed" app> -->
     <v-footer class="footer">
       <div class="footer_col">
         <div class="footer_logo">
@@ -186,14 +169,12 @@
         </p>
       </div>
     </v-footer>
-    <!-- </v-footer> -->
-    <!-- left nav -->
-    <!-- ------- -->
   </v-app>
 </template>
 
 <script>
 export default {
+  // buildModules: ['v-click-outside'],
   name: 'DefaultLayout',
   data () {
     return {
@@ -201,26 +182,142 @@ export default {
       drawer: false,
       fixed: false,
       header: {
-        links: [
+        linksLvl0: [
+          {
+            name: 'Терминал',
+            link: '/download',
+            linkcount: 0
+          },
           {
             name: 'Типы счетов',
-            link: '/accountstype'
+            link: '/accountstype',
+            linkcount: 0
           },
           {
             name: 'Портфели',
-            link: '/portfolio'
+            link: '/portfolio',
+            linkcount: 0
           },
           {
             name: 'О нас',
-            link: '/aboutUs'
+            link: '/aboutUs',
+            linkcount: 0
           },
           {
             name: 'Обучение',
-            link: ''
+            link: '',
+            linksLvl1IsOpen: false,
+            linkParent: 'education',
+            linkcount: 2,
+            linksLvl1:
+            [
+              {
+                name: 'Курс',
+                link: '',
+                linkParent: '/courses',
+                linksLvl2IsOpen: false,
+                linksLvl2:
+                [
+                  {
+                    name: 'Курс "Начинающим"',
+                    link: '/begginer'
+                  },
+                  {
+                    name: 'Курс "Продвинутым"',
+                    link: '/advanced'
+                  }
+                ]
+              },
+              {
+                name: 'Видеоуроки',
+                link: '',
+                linkParent: '/lessons',
+                linksLvl2IsOpen: false,
+                linksLvl2:
+                [
+                  {
+                    name: 'Начинающим',
+                    link: '/begginer'
+                  },
+                  {
+                    name: 'Продвинутым',
+                    link: '/advanced'
+                  },
+                  {
+                    name: 'Криптовалюты',
+                    link: '/crypto'
+                  }
+                ]
+              }
+            ]
           },
           {
             name: 'Аналитика',
-            link: ''
+            link: '',
+            linkParent: 'analytics',
+            linksLvl1IsOpen: false,
+            linkcount: 2,
+            linksLvl1:
+            [
+              {
+                name: 'Сигналы',
+                link: '/signals'
+              },
+              {
+                name: 'Экономический календарь',
+                link: '/calendar'
+              },
+              {
+                name: 'Инструменты',
+                link: '',
+                linkParent: '/instruments',
+                linksLvl2IsOpen: false,
+                linksLvl2:
+                [
+                  {
+                    name: 'Аналитические',
+                    link: '/analityc'
+                  },
+                  {
+                    name: 'Трейдерские',
+                    link: '/trader'
+                  },
+                  {
+                    name: 'Информеры',
+                    link: '/informers'
+                  },
+                  {
+                    name: 'Календари',
+                    link: '/calendars'
+                  }
+                ]
+              },
+              {
+                name: 'Публикации',
+                link: '',
+                linkParent: '/publications',
+                linksLvl2IsOpen: false,
+                linksLvl2:
+                [
+                  {
+                    name: 'Новости',
+                    link: '/news'
+                  },
+                  {
+                    name: 'Технический анализ',
+                    link: '/tech'
+                  },
+                  {
+                    name: 'Фундаментальный анализ',
+                    link: '/fund'
+                  },
+                  {
+                    name: 'Определение потенциала тренда',
+                    link: '/potentional'
+                  }
+                ]
+              }
+            ]
           },
           {
             name: 'Контакты',
@@ -285,6 +382,42 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  methods: {
+    openPage (link) {
+      console.log(link)
+      this.$router.push('/' + link)
+    },
+    nav_reset () {
+      this.header.linksLvl0.forEach((link) => {
+        link.linksLvl1IsOpen = false
+        if (link.linkcount > 0) {
+          link.linksLvl1.forEach((element) => {
+            element.linksLvl2IsOpen = false
+          })
+        }
+      })
+    },
+    navLvl0_click (value) {
+      this.header.linksLvl0.forEach((element) => {
+        if (element.name !== value.name) {
+          element.linksLvl1IsOpen = false
+        }
+      })
+      // value = !value
+    },
+    navLvl1_click (value) {
+      this.header.linksLvl0.forEach((link) => {
+        if (link.linkcount > 0) {
+          link.linksLvl1.forEach((element) => {
+            if (element.name !== value.name) {
+              element.linksLvl2IsOpen = false
+            }
+          })
+        }
+      })
+      // value = !value
+    }
   }
 }
 </script>
@@ -322,14 +455,15 @@ export default {
   position: fixed;
   left: 50%;
   transform: translate(-50%, 60px);
+  z-index: 1000000;
 
   align-items: center;
+  height: 109/1920*100vw;
+  width: 1762/1920*100%;
   border: 1px solid;
   border-radius: 25px;
-  background: rgba(208, 208, 208, 0.2);
-  height: 109px;
-  width: 1762/1920*100%;
   backdrop-filter: blur(5px);
+  background: rgba(208, 208, 208, 0.2);
   border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
   &_logo {
     @include makeitflex(row, flex-start);
@@ -352,10 +486,10 @@ export default {
       fill: #1CB0FF;
       >svg{
         >circle{
-            box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+          box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
         >path{
-            box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+          box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
       }
     }
@@ -368,12 +502,69 @@ export default {
     }
   }
   &_nav{
-      @include makeitflex(row, flex-start);
+    @include makeitflex(row, flex-start);
       align-items: center;
+    &_lvl0{
+      align-items: center;
+      @include makeitflex(row, flex-start);
+    }
+    &_lvl1{
+      backdrop-filter: blur(5px);
+      background: rgba(208, 208, 208, 0.2);
+      position: absolute;
+      bottom: 0;
+      transform: translate(-10%,101%);
+      text-align: left;
+      display: none;
+      border: 1px solid;
+      border-radius: 25px;
+      padding: 1vw !important;
+      border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+
+    }
+    &_lvl2{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(111%,-15%);
+      text-align: left;
+      width: auto;
+      display: none;
+      border: 1px solid;
+      border-radius: 25px;
+      padding: 1vw !important;
+      backdrop-filter: blur(5px);
+      background: rgba(208, 208, 208, 0.2);
+      border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+    }
+  }
+  .link{
+    margin-bottom: 1vw;
+    position: relative;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    &_lvl0{
+      position: relative;
+    }
+    &_lvl1{
+      position: relative;
+      margin-left: 0;
+      white-space: nowrap;
+      width: 100%;
+      text-align: left;
+    }
+    &_lvl2{
+      text-align: left;
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
 }
-
+.visible{
+  display: block;
+}
 .footer {
     @include makeitflex(row, space-between);
     margin-top: auto;

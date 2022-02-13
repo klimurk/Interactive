@@ -27,9 +27,12 @@
                 {{ benefit }}
               </li>
             </ul>
-            <button class="item_btn btn_blue">
+            <a
+              class="item_btn btn_blue"
+              @click.prevent="openPage(portfolio.link)"
+            >
               {{ portfolio_btn_open }}
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -54,22 +57,26 @@ export default {
         {
           name: 'ФАРМАЦЕ́ВТИКА',
           benefits: ['От $100, 000', 'Доходность 7-12%', 'От 1 года'],
-          imgUrl: 'preview1.png'
+          imgUrl: 'preview1.png',
+          link: 'pharmaceut'
         },
         {
           name: 'Недвижимость',
           benefits: ['От $150, 000', 'Доходность 9-14%', 'От 2 лет'],
-          imgUrl: 'preview2.png'
+          imgUrl: 'preview2.png',
+          link: 'realty'
         },
         {
           name: 'IT технологии',
           benefits: ['От  $200, 000', 'Доходность 11-17%', 'От 3 лет'],
-          imgUrl: 'preview3.png'
+          imgUrl: 'preview3.png',
+          link: 'it'
         },
         {
           name: 'Криптовалюты',
           benefits: ['От $300, 000', 'Доходность 19-25%', 'От 2,5 лет'],
-          imgUrl: 'preview4.png'
+          imgUrl: 'preview4.png',
+          link: 'crypto'
         }
       ]
 
@@ -87,6 +94,9 @@ export default {
   methods: {
     getImgUrl (pic) {
       return require('~/assets/images/sheets/portfolio/index/' + pic)
+    },
+    openPage (link) {
+      this.$router.push('/portfolio/' + link)
     }
   }
 }
@@ -175,6 +185,7 @@ export default {
               line-height: 24/14*1;
             }
             & .item_btn{
+              color: $textColor1;
               padding: 15/1920*100vw 40/1920*100vw;
               width: fit-content;
               font-family: 'Roboto', sans-serif !important;

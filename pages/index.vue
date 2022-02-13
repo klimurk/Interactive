@@ -28,7 +28,156 @@
             {{ datablock1.text }}
           </p>
         </div>
-        <v-img lazy-src="/assets/images/temp/mainBlock2.png" :src="require('~/assets/images/temp/mainBlock2.png')" alt="" />
+        <!-- <v-img lazy-src="/assets/images/temp/mainBlock2.png" :src="require('~/assets/images/temp/mainBlock2.png')" alt="" /> -->
+        <div class="tradingview">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget" />
+            <div class="tradingview-widget-copyright">
+              <a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView
+            </div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+              "colorTheme": "dark",
+              "dateRange": "12M",
+              "showChart": true,
+              "locale": "en",
+              "width": "100%",
+              "height": "100%",
+              "largeChartUrl": "",
+              "isTransparent": false,
+              "showSymbolLogo": true,
+              "showFloatingTooltip": false,
+              "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+              "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+              "gridLineColor": "rgba(240, 243, 250, 0)",
+              "scaleFontColor": "rgba(120, 123, 134, 1)",
+              "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+              "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+              "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+              "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+              "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+              "tabs": [
+              {
+              "title": "Indices",
+              "symbols": [
+              {
+              "s": "FOREXCOM:SPXUSD",
+              "d": "S&P 500"
+              },
+              {
+              "s": "FOREXCOM:NSXUSD",
+              "d": "US 100"
+              },
+              {
+              "s": "FOREXCOM:DJI",
+              "d": "Dow 30"
+              },
+              {
+              "s": "INDEX:NKY",
+              "d": "Nikkei 225"
+              },
+              {
+              "s": "INDEX:DEU40",
+              "d": "DAX Index"
+              },
+              {
+              "s": "FOREXCOM:UKXGBP",
+              "d": "UK 100"
+              }
+              ],
+              "originalTitle": "Indices"
+              },
+              {
+              "title": "Futures",
+              "symbols": [
+              {
+              "s": "CME_MINI:ES1!",
+              "d": "S&P 500"
+              },
+              {
+              "s": "CME:6E1!",
+              "d": "Euro"
+              },
+              {
+              "s": "COMEX:GC1!",
+              "d": "Gold"
+              },
+              {
+              "s": "NYMEX:CL1!",
+              "d": "Crude Oil"
+              },
+              {
+              "s": "NYMEX:NG1!",
+              "d": "Natural Gas"
+              },
+              {
+              "s": "CBOT:ZC1!",
+              "d": "Corn"
+              }
+              ],
+              "originalTitle": "Futures"
+              },
+              {
+              "title": "Bonds",
+              "symbols": [
+              {
+              "s": "CME:GE1!",
+              "d": "Eurodollar"
+              },
+              {
+              "s": "CBOT:ZB1!",
+              "d": "T-Bond"
+              },
+              {
+              "s": "CBOT:UB1!",
+              "d": "Ultra T-Bond"
+              },
+              {
+              "s": "EUREX:FGBL1!",
+              "d": "Euro Bund"
+              },
+              {
+              "s": "EUREX:FBTP1!",
+              "d": "Euro BTP"
+              },
+              {
+              "s": "EUREX:FGBM1!",
+              "d": "Euro BOBL"
+              }
+              ],
+              "originalTitle": "Bonds"
+              },
+              {
+              "title": "Forex",
+              "symbols": [
+              {
+              "s": "FX:EURUSD"
+              },
+              {
+              "s": "FX:GBPUSD"
+              },
+              {
+              "s": "FX:USDJPY"
+              },
+              {
+              "s": "FX:USDCHF"
+              },
+              {
+              "s": "FX:AUDUSD"
+              },
+              {
+              "s": "FX:USDCAD"
+              }
+              ],
+              "originalTitle": "Forex"
+              }
+              ]
+              }
+            </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
       </div>
       <div id="block3" class="mainPage_block3">
         <p class="title">
@@ -264,6 +413,10 @@ export default {
     window.addEventListener('scroll', this.block5ScrollEvent)
     window.addEventListener('scroll', this.block3ScrollEvent)
   },
+  beforeUpdate () {
+    console.log('tv-embed-widget-wrapper__body', document.getElementsByClassName('tv-embed-widget-wrapper__body')[0])
+    document.getElementsByClassName('tv-embed-widget-wrapper__body')[0].style.border = '0'
+  },
   beforeDestroy () {
     window.removeEventListener('scroll', this.block5ScrollEvent)
     window.removeEventListener('scroll', this.block3ScrollEvent)
@@ -362,7 +515,21 @@ export default {
       line-height: 1;
       letter-spacing: 0.05em  !important;
     }
-
+    .tradingview{
+      height: 912/1920*100vw;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 2px solid #434651;
+      & .tradingview-widget-container{
+          & .tv-embed-widget-wrapper {
+            width: 60px !important;
+            height: auto;
+          }
+          .tv-embed-widget-wrapper__body{
+            border: 0;
+        }
+      }
+    }
   }
   &_block3{
     margin-bottom: 90px;

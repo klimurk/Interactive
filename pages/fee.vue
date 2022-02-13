@@ -1,18 +1,19 @@
 <template>
   <div>
-    <div class="">1213213 </div>
-    <form-card title="nazvanie" :id.sync="id" @submit="func"></form-card>
-
+    <div class="">
+      1213213
+    </div>
+    <form-card :id.sync="id" title="nazvanie" @submit="func" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-  layout: 'error',
   components: {
     formCard: () => import('~/components/card')
   },
+  layout: 'error',
   data () {
     return {
       id: 0,
