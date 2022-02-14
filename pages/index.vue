@@ -534,6 +534,7 @@ export default {
   &_block3{
     margin-bottom: 90px;
     position: relative;
+    overflow: hidden;
     & .left{
       transform: translateX(-20%);
       transition: transform .8s linear;

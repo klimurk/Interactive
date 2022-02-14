@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <header v-click-outside="nav_reset" class="header">
-      <NuxtLink class="header_logo" to="/">
+      <NuxtLink class="header_logo" to="/" @click="nav_reset">
         <svg viewBox="0 0 89 52">
           <circle cx="26" cy="26" r="26" />
           <path
@@ -17,6 +17,7 @@
               v-if="link0.link !=''"
               :to="link0.link"
               class="btn_nav transparent"
+              @click="nav_reset"
             >
               {{ link0.name }}
             </NuxtLink>
@@ -34,7 +35,7 @@
                   v-if="link1.link !=''"
                   :to="link1.link"
                   class="btn_nav  link_lvl1"
-                  @click.prevent="openPage(link0.linkParent + link1.link)"
+                  @click.prevent="openPage(link0.linkParent + link1.link); nav_reset()"
                 >
                   {{ link1.name }}
                 </a>
@@ -51,7 +52,7 @@
                       v-if="link2.link !=''"
                       :to="link2.link"
                       class="btn_nav  link_lvl2"
-                      @click.prevent="openPage(link0.linkParent + link1.linkParent + link2.link)"
+                      @click.prevent="openPage(link0.linkParent + link1.linkParent + link2.link); nav_reset()"
                     >
                       {{ link2.name }}
                     </a>
@@ -220,7 +221,7 @@ export default {
                 [
                   {
                     name: 'Курс "Начинающим"',
-                    link: '/begginer'
+                    link: '/beginner'
                   },
                   {
                     name: 'Курс "Продвинутым"',
@@ -237,7 +238,7 @@ export default {
                 [
                   {
                     name: 'Начинающим',
-                    link: '/begginer'
+                    link: '/beginner'
                   },
                   {
                     name: 'Продвинутым',
@@ -270,13 +271,14 @@ export default {
               {
                 name: 'Инструменты',
                 link: '',
-                linkParent: '/instruments',
+                // linkParent: '/instruments',
+                linkParent: '',
                 linksLvl2IsOpen: false,
                 linksLvl2:
                 [
                   {
                     name: 'Аналитические',
-                    link: '/analityc'
+                    link: '/analytic'
                   },
                   {
                     name: 'Трейдерские',
@@ -385,7 +387,6 @@ export default {
   },
   methods: {
     openPage (link) {
-      console.log(link)
       this.$router.push('/' + link)
     },
     nav_reset () {
@@ -404,7 +405,6 @@ export default {
           element.linksLvl1IsOpen = false
         }
       })
-      // value = !value
     },
     navLvl1_click (value) {
       this.header.linksLvl0.forEach((link) => {
@@ -572,7 +572,7 @@ export default {
     background: linear-gradient(357.58deg, #0F162F -2.27%, #0E141E 93.92%);
     padding: 65/1920*100vw 45/1920*100vw 65/1920*100vw 90/1920*100vw;
     text-decoration: none;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', sans-serif !important;
     font-size: $h7FS;
     font-weight: 600;
     color: $textColor1;
