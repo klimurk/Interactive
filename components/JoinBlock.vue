@@ -1152,7 +1152,7 @@ export default {
 
     &_anim{
       @include makeitflex(column, center);
-      margin-top: 130/1920*100vw;
+      margin-top: vwDesk(130);
       background-image: url('~/assets/images/sheets/Main/block6/background1.svg');
       background-size: cover;
       background-position-y: top;
@@ -1163,10 +1163,10 @@ export default {
       &_square{
         cursor: pointer;
         position: absolute;
-        width: 240/1920*100vw;
-        height: 240/1920*100vw;
+        width: vwDesk(240);
+        height: vwDesk(240);
         font-weight: 600;
-        font-size: $h7FS;
+        font-size: $fs-14;
         line-height: 1.35;
         text-align: center;
         text-align: center;
@@ -1179,11 +1179,11 @@ export default {
           top: 50%;
           transform: translate(-50%, -50%);
           width: 60%;
-          transition: color $transition_time $transition_anim_type;
+          transition: color $anim-time $anim-type;
         }
         & .squareHover{
           opacity: 0;
-          transition: opacity $transition_time $transition_anim_type;
+          transition: opacity $anim-time $anim-type;
         }
         &:hover{
           &>p{
@@ -1200,7 +1200,7 @@ export default {
         padding: 15px 130px;
         opacity: 0;
         margin: 0 auto;
-        color:$textColor1;
+        color:$clr-text-1;
         display: none;
       }
       & .s1{

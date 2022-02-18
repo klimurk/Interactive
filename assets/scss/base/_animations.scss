@@ -1,18 +1,17 @@
-
 // ! Sass animations
+.visible {
+  display: block;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.only_mobile {
+  display: none;
+  @media (max-width: $w_adapt) {
+    display: block;
+  }
+}
+.only_desktop {
+  display: block;
+  @media (max-width: $w_adapt) {
+    display: none;
+  }
+}

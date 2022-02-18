@@ -1,37 +1,37 @@
-$width_phoneVer:320px;
-$width_phoneHor:480px;
-$width_iPadVer: 600px;
-$width_iPadHor: 800px;
-$width_tablet: 1024px;
-$width_phone: 1280px;
-$width_fullhd: 1920px;
-$width_adaptive: $width_tablet;
+$w_phoneVer: 320px;
+$w_phoneHor: 480px;
+$w_iPadVer: 600px;
+$w_iPadHor: 800px;
+$w_tablet: 1024px;
+$w_phone: 1280px;
+$w_fullhd: 1920px;
+$w_adapt: $w_tablet;
 
+$clr-back-1: #020202;
+$clr-back-2: #0d1522;
+$clr-btn-1: #1cb0ff;
+$clr-btn-2: #0a87fa;
+$clr-footer-1: #0f162f;
+$clr-footer-2: #0e141e;
+$clr-header-2: #1a202c;
+$clr-header-1: #6a6868;
+$clr-text-1: #fff;
 
-$backgroundColor1: #020202;
-$backgroundColor2: #0D1522;
-$btncolor1: #1CB0FF;
-$btncolor2: #0A87FA;
-$footerColor1: #0F162F;
-$footerColor2: #0E141E;
-$headerColor2: #1A202C;
-$headerColor1: #6A6868;
-$textColor1:#fff;
+$fs-64: vwDesk(64);
+$fs-48: vwDesk(48);
+$fs-40: vwDesk(40);
+$fs-36: vwDesk(36);
+$fs-24: vwDesk(24);
+$fs-18: vwDesk(18);
+$fs-14: vwDesk(14);
 
+$fs-64-m: vwMob(64);
+$fs-48-m: vwMob(48);
+$fs-40-m: vwMob(40);
+$fs-36-m: vwMob(36);
+$fs-24-m: vwMob(24);
+$fs-18-m: vwMob(18);
+$fs-14-m: vwMob(14);
 
-$margin_horizontal_device: 50px;
-$margin_horizontal_phone: 10px;
-
-$margin_vertical_blocks: 50px;
-
-$h1FS:64/1920*100vw;
-$h2FS:48/1920*100vw;
-$h3FS:40/1920*100vw;
-$h4FS:36/1920*100vw;
-$h5FS:24/1920*100vw;
-$h6FS:18/1920*100vw;
-$h7FS:14/1920*100vw;
-
-
-$transition_time:.2s;
-$transition_anim_type: ease-in;
+$anim-time: 0.2s;
+$anim-type: ease-in;

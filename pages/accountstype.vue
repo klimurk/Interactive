@@ -174,7 +174,7 @@ export default {
       margin: 30px auto 65px;
     }
     & .text{
-      max-width: 1075/1920*100vw;
+      max-width: vwDesk(1075);
       margin: 25px auto 0;
     }
     &_block{
@@ -184,7 +184,7 @@ export default {
       margin: 50px 40px;
       padding: 33px;
       flex: 1 0 0;
-      color: $textColor1;
+      color: $clr-text-1;
       border: solid 2px #171B21;
       box-shadow: inset 0px 0px 24px #000000;
       @include makeitflex(row,center);
@@ -195,7 +195,7 @@ export default {
         border-radius: 40px;
         background-image: url('~/assets/images/sheets/AccountsType/block_hover.svg');
         background-size: cover;
-        transition: opacity $transition_time linear !important ;
+        transition: opacity $anim-time linear !important ;
         // filter: blur(64px);
         position: absolute;
         left: 0;
@@ -211,27 +211,27 @@ export default {
       &_col{
         margin: 0 20px;
         // flex: 1 0 0;
-        width: 220/1920*100vw;
+        width: vwDesk(220);
         @include makeitflex(column, center);
         &_type{
           font-family: 'Manrope', sans-serif !important;
           font-style: normal;
           font-weight: bold;
-          font-size: $h5FS;
+          font-size: $fs-24;
           line-height: 32/24*1;
         }
         &_price{
           font-family: 'Manrope', sans-serif !important;
           font-style: normal;
           font-weight: bold;
-          font-size: $h3FS;
+          font-size: $fs-40;
           line-height: 48/40*1;
         }
         &_btn{
           font-family: 'Roboto', sans-serif !important;
           font-style: normal !important;
           font-weight: bold !important;
-          font-size: $h6FS;
+          font-size: $fs-18;
           line-height: 1.5;
           text-align: center;
           height: fit-content;
@@ -241,7 +241,7 @@ export default {
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: normal !important;
-          font-size: $h7FS !important;
+          font-size: $fs-14 !important;
           line-height: 1 !important;
           flex: 1 0 0;
           margin: 10px 0;

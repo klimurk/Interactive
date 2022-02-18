@@ -735,7 +735,7 @@ export default {
   .title{
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
-    font-size: $h5FS !important;
+    font-size: $fs-24 !important;
     line-height: 33/24*1;
     letter-spacing: 0.05em !important;
     font-weight: 800 !important;
@@ -744,7 +744,7 @@ export default {
   .text{
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
-    font-size: $h5FS !important;
+    font-size: $fs-24 !important;
     line-height: 33/24*1;
     letter-spacing: 0.05em !important;
     font-weight: normal !important;
@@ -755,8 +755,8 @@ export default {
     margin-bottom: 65px;
     &_info{
       position: absolute;
-      left: 80/1920*100vw;
-      bottom: 40/1920*100vw;
+      left: vwDesk(80);
+      bottom: vwDesk(40);
       background: #171B21;
       box-shadow: inset 0px 0px 24px #000000;
       border-radius: 20px;
@@ -764,9 +764,9 @@ export default {
     }
   }
   .info_block{
-    padding: 0 40/1920*100vw;
+    padding: 0 vwDesk(40);
     .title,.text{
-      margin-bottom: $h4FS;
+      margin-bottom: $fs-36;
     }
   }
   .prefooter{
@@ -777,7 +777,7 @@ export default {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      padding: 15/1920*100vw 48/1920*100vw;
+      padding: vwDesk(15) vwDesk(48);
     }
   }
 </style>

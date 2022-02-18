@@ -302,11 +302,8 @@ export default {
   methods: {
     resetCategory () {
       this.datablock.forEach((elementBlock) => {
-        console.log('1')
         elementBlock.info.categories.forEach((category) => {
-          console.log('2')
           category.categoryBlock.forEach((element) => {
-            console.log('3')
             element.isActive = false
           })
         })
@@ -318,41 +315,41 @@ export default {
 
 <style lang="scss" scoped>
 .coursePage{
-  margin: 70/1920*100vw 130/1920*100vw ;
+  margin: vwDesk(70) vwDesk(130) ;
   .title{
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
     font-weight: 800 !important;
-    font-size: $h2FS !important;
+    font-size: $fs-48 !important;
     line-height: 100%;
     /* or 48px */
 
     letter-spacing: 0.05em !important;
     text-transform: capitalize;
     text-align: center;
-    margin-bottom: 80/1920*100vw;
+    margin-bottom: vwDesk(80);
   }
   .coursePage_inner{
     .innerTitle{
       @include makeitflex(row, space-between);
-      margin-bottom: 30/1920*100vw;
+      margin-bottom: vwDesk(30);
       .col{
         align-self: end;
         .title{
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: 600 !important;
-          font-size: $h1FS !important;
+          font-size: $fs-64 !important;
           line-height: 75/64*1;
-          margin-bottom: 30/1920*100vw;
+          margin-bottom: vwDesk(30);
           text-align: left;
         }
         .text{
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: 600 !important;
-          font-size: $h5FS !important;
-          line-height: 28/1920*1 !important;
+          font-size: $fs-24 !important;
+          line-height: 28/24*1 !important;
         }
         .linkNext{
           @include makeitflex(row,flex-start);
@@ -367,22 +364,22 @@ export default {
             // background: linear-gradient(180deg, #1CB0FF 0%, #0A87FA 100%);
           font-family: 'Manrope', sans-serif !important;
           font-weight: 500;
-          font-size: $h7FS;
+          font-size: $fs-14;
           line-height: 18/14*1;
-          padding: 10/1920*100vw 12/1920*100vw;
-          max-width: 180/1920*100vw;
+          padding: vwDesk(10) vwDesk(12);
+          max-width: vwDesk(180);
           // white-space:pre-wrap;
-          color: $textColor1;
+          color: $clr-text-1;
           cursor: pointer;
           }
           >div{
             @include makeitflex(column, center);
-            background-color: $textColor1;
+            background-color: $clr-text-1;
             height: 100%;
             >svg{
-              width: 20/1920*100vw;
-              margin: 0 auto;
-              margin: 14/1920*100vw;
+              width: vwDesk(20);
+              // margin: 0 auto;
+              margin: vwDesk(14);
             }
           }
         }
@@ -393,49 +390,49 @@ export default {
       @include makeitflex(row, space-between);
       .col{
         .category{
-          width: 600/1920*100vw;
+          width: vwDesk(600);
           .category_title{
             cursor: pointer;
             @include makeitflex(row,center);
             align-items: center;
             background: linear-gradient(91.5deg, #00EBA4 0.15%, #5EB2FF 100%);
             border-radius: 20px;
-            padding: 40/1920*100vw 220/1920*100vw 30/1920*100vw;
+            padding: vwDesk(40) vwDesk(220) vwDesk(30);
               font-family: 'Manrope', sans-serif !important;
               font-style: normal;
               font-weight: bold;
-              font-size: $h5FS;
+              font-size: $fs-24;
               line-height: 28/24*1;
               /* identical to box height */
               text-transform: uppercase;
             >svg{
-              width: 10/1920*100vw;
-              margin-left: 15/1920*100vw;
+              width: vwDesk(10);
+              margin-left: vwDesk(15);
             }
           }
           .categoty_block{
             cursor: pointer;
             @include makeitflex(row, flex-start);
                 align-items: center;
-            padding: 25/1920*100vw 50/1920*100vw;
+            padding: vwDesk(25) vwDesk(50);
             font-family: 'Manrope', sans-serif !important;
             font-style: normal;
             font-weight: 500;
-            font-size: $h5FS;
+            font-size: $fs-24;
             line-height: 28/24*1;
-            transition: border $transition_time $transition_anim_type;
+            transition: border $anim-time $anim-type;
             /* identical to box height */
 
             border-radius: 20px;
-            margin-top: 5/1920*100vw;
+            margin-top: vwDesk(5);
             text-transform: capitalize;
               border: solid 2px transparent;
             &:hover{
-              border: solid 2px $btncolor1;
+              border: solid 2px $clr-btn-1;
             }
             >svg{
-              width: 50/1920*100vw;
-              margin-right: 30/1920*100vw;
+              width: vwDesk(50);
+              margin-right: vwDesk(30);
             }
           }
         }
@@ -444,7 +441,7 @@ export default {
   }
   & iframe{
     width: 100%;
-    min-height: 550/1920*100vw;
+    min-height: vwDesk(550);
   }
 }
 </style>

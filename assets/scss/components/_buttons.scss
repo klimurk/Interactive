@@ -1,64 +1,62 @@
-.btn_nav{
-    margin-right: 40/1920*100vw;
-    height: fit-content;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-style: normal;
-    font-family: 'Manrope', sans-serif;
-    font-size: $h7FS;
-    line-height: 19/14*100%;
-    font-weight: 600;
-    color: #fff;
-    transition: $transition_time linear;
-    text-align: center;;
-    &:hover{
-        color:#1CB0FF ;
-        cursor: pointer;
-    }
+.btn_nav {
+  margin-right: vwDesk(40);
+  height: fit-content;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: "Manrope", sans-serif;
+  font-size: $fs-14;
+  line-height: 19/14 * 100%;
+  font-weight: 600;
+  color: #fff;
+  transition: $anim-time linear;
+  text-align: center;
+  &:hover {
+    color: #1cb0ff;
+    cursor: pointer;
+  }
 }
 
-.btn_blue{
-    border-radius: 10px;
-    background: linear-gradient(180deg, #1CB0FF 0%, #0A87FA 100%);
-    transition: box-shadow $transition_time linear, color $transition_time linear;
-    align-items: center;
-    &:hover{
-        color: $textColor1;
-        cursor: pointer;
-        box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
-    }
+.btn_blue {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #1cb0ff 0%, #0a87fa 100%);
+  transition: box-shadow $anim-time linear, color $anim-time linear;
+  align-items: center;
+  &:hover {
+    color: $clr-text-1;
+    cursor: pointer;
+    box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
+  }
 }
-.btn_apple{
-    border-radius: 10px;
-    background: linear-gradient(174.33deg, #29649B 2.19%, #00FDDF 99.09%);
-    transition: box-shadow $transition_time linear, color $transition_time linear;
-    align-items: center;
-    &:hover{
-        color: $textColor1;
-        cursor: pointer;
-        box-shadow: 0px 4px 20px rgba(0, 253, 223, 0.8);
-    }
+.btn_apple {
+  border-radius: 10px;
+  background: linear-gradient(174.33deg, #29649b 2.19%, #00fddf 99.09%);
+  transition: box-shadow $anim-time linear, color $anim-time linear;
+  align-items: center;
+  &:hover {
+    color: $clr-text-1;
+    cursor: pointer;
+    box-shadow: 0px 4px 20px rgba(0, 253, 223, 0.8);
+  }
 }
-.btn_reg{
-    padding: 15px 33px;
-}
-
-.pageImgHead{
-    border-radius: 40px;
-    margin: 30px auto 65px;
+.btn_reg {
+  padding: 15px 33px;
 }
 
+.pageImgHead {
+  border-radius: 40px;
+  margin: 30px auto 65px;
+}
 
-.transparent{
-    background-color:rgba($color: #000000, $alpha: 0);
-    border: none;
+.transparent {
+  background-color: rgba($color: #000000, $alpha: 0);
+  border: none;
 }
 .v-application--wrap {
-    background:linear-gradient(135deg, $backgroundColor1, $backgroundColor2);
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    line-height: 22.5/18*1;
-    font-weight: normal;
-    color: $textColor1;
-
+  background: linear-gradient(135deg, $clr-back-1, $clr-back-2);
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  line-height: 22.5/18 * 1;
+  font-weight: normal;
+  color: $clr-text-1;
 }

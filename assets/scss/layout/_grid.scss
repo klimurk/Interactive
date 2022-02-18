@@ -1,21 +1,16 @@
-
-
-
-
 /*     Container
 ============================= */
 
 // .container {
 //     position: relative;
 //     margin: 0 $margin_horizontal_device;
-//     @media(max-width: $width_adaptive) {
+//     @media(max-width: $w_adapt) {
 //         margin: 0 $margin_horizontal_phone;
 //     }
 // }
 
 .body__inner {
-    @include makeitflex(column, flex-start);
-    min-height: calc(var(--fullvh)*100);
-    overflow: hidden;
+  @include makeitflex(column, flex-start);
+  min-height: calc(var(--fullvh) * 100);
+  overflow: hidden;
 }
-

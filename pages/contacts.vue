@@ -172,7 +172,7 @@ export default {
     }
     & .text{
 
-      max-width: 1629/1920*100vw;
+      max-width: vwDesk(1629);
       margin: 25px auto 0;
     }
     &_blocks{
@@ -184,9 +184,9 @@ export default {
         border-radius: 40px;
         margin: 0 25px;
         padding: 15px 25px 20px;
-        color: $textColor1;
+        color: $clr-text-1;
         border: solid 2px #171B21;
-        max-width: 250/1920*100vw;
+        max-width: vwDesk(250);
         box-shadow: inset 0px 0px 24px #000000;
         background: linear-gradient(150deg, #333842 2.08%, #161B21 69.91%), #333842;
         border-radius: 30px;
@@ -200,7 +200,7 @@ export default {
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: bold !important;
-          font-size: $h7FS !important;
+          font-size: $fs-14 !important;
           line-height: 2.29 !important;
           text-align: center !important;
 
@@ -210,16 +210,16 @@ export default {
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: 600 !important;
-          font-size: $h7FS !important;
+          font-size: $fs-14 !important;
           // line-height: 2.29 !important;
           text-align: center;
           & >a{
-            color: $textColor1 !important;
-            transition: color $transition_time $transition_anim_type;
+            color: $clr-text-1 !important;
+            transition: color $anim-time $anim-type;
             word-wrap: break-word;
             &:hover{
               cursor: pointer;
-              color: $btncolor1 !important;
+              color: $clr-btn-1 !important;
             }
           }
         }
@@ -244,7 +244,7 @@ export default {
           font-family: 'Manrope', sans-serif !important;
           font-style: normal !important;
           font-weight: normal !important;
-          font-size: $h5FS !important;
+          font-size: $fs-24 !important;
           line-height: 30/24*1 !important;
           text-align: left;
           margin-bottom: 45px;
@@ -254,7 +254,7 @@ export default {
           font-family: 'Manrope', sans-serif !important;
             font-style: normal !important;
             font-weight: 500 !important;
-            font-size: $h6FS !important;
+            font-size: $fs-18 !important;
             line-height: 1.3;
           }
         }
@@ -264,7 +264,7 @@ export default {
           font-family: 'Manrope', sans-serif !important;
           font-style: normal!important;
           font-weight: 600 !important;
-          font-size: $h7FS !important;
+          font-size: $fs-14 !important;
           line-height: 19/14*1;
           letter-spacing: 0.05em;
           text-transform: uppercase !important ;

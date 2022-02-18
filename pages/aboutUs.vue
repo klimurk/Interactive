@@ -1501,7 +1501,7 @@ export default {
         & .title{
           font-style: normal !important;
           font-weight: bold !important;
-          font-size: $h2FS !important;
+          font-size: $fs-48 !important;
           line-height: 1 !important;
 
           letter-spacing: 0.05em;
@@ -1511,7 +1511,7 @@ export default {
         & .text{
           font-style: normal;
           font-weight: normal;
-          font-size: $h5FS;
+          font-size: $fs-24;
           line-height: 1.25;
           /* or 30px */
 
@@ -1522,17 +1522,17 @@ export default {
       }
       .center{
         text-align: center;
-        max-width: 1283/1920*100vw;
-        margin: 0 auto 200/1920*100vw;
+        max-width: vwDesk(1283);
+        margin: 0 auto vwDesk(200);
       }
       .left{
         text-align: left;
-        max-width: 990/1920*100vw;
+        max-width: vwDesk(990);
       }
       .right{
         text-align: left;
-        max-width: 880/1920*100vw;
-        margin-bottom:470/1920*100vw;
+        max-width: vwDesk(880);
+        margin-bottom: vwDesk(470);
         margin-left: auto;
       }
       &_svg{
@@ -1540,30 +1540,30 @@ export default {
           position: absolute;
           left: 0;
           top: 400px;
-          height: 824/1920*100vw;
+          height: vwDesk(824);
           z-index: -1;
         }
         &_blocks{
           @include makeitflex(row, flex-start);
-          width: 720/1920*100vw;
+          width: vwDesk(720);
           position: absolute;
           bottom: 60px;
           right: 50px;
           &_col{
             @include makeitflex(column, flex-end);
-            margin-right: 48/1920*100vw;
+            margin-right: vwDesk(48);
             .num{
               font-family: 'Manrope', sans-serif !important;
               text-align: center;
               font-style: normal !important;
               font-weight: 600 !important;
-              font-size: $h4FS !important;
+              font-size: $fs-36 !important;
               line-height: 49/36*1 !important;
               font-feature-settings: 'pnum' on, 'lnum' on;
               background: linear-gradient(176.05deg, #FFFFFF 34.22%, #00FDDF 101.54%, #29649B 121.84%);
               background-clip: text;
               -webkit-text-fill-color: transparent;
-              margin-bottom: 60/1920*100vw;
+              margin-bottom: vwDesk(60);
               opacity: 0;
             }
             .svg_block{
@@ -1581,7 +1581,7 @@ export default {
       background-image: url('~/assets/images/sheets/AboutUs/block2/background.svg');
       background-size: cover;
       background-position-y: bottom;
-      padding: 0 120/1920*100vw;
+      padding: 0 vwDesk(120);
       &_col{
         @include makeitflex(column, flex-start);
         position: relative;
@@ -1590,7 +1590,7 @@ export default {
           font-family: 'Raleway', sans-serif !important;
           font-style: normal !important;
           font-weight: 800 !important;
-          font-size: $h2FS !important;
+          font-size: $fs-48 !important;
           line-height: 1.4;
         }
         & .citation{
@@ -1598,9 +1598,9 @@ export default {
           font-family: 'Raleway', sans-serif !important;
           font-style: normal !important;
           font-weight: bold !important;
-          font-size: $h4FS !important;
+          font-size: $fs-36 !important;
           line-height: 1.4;
-          width: 600/1920*100vw;
+          width: vwDesk(600);
           /* or 50px */
           text-align: right;
           & .svg_citation_1{
@@ -1608,14 +1608,14 @@ export default {
             left: 0;
             top: 0;
             transform: translate(250%,-100%);
-            width: 18.5/1920*100vw;
+            width: vwDesk(18.5);
           }
           & .svg_citation_2{
             position: absolute;
             right: 0;
             bottom: 0;
             transform: translate(100%, 100% );
-            width: 18.5/1920*100vw;
+            width: vwDesk(18.5);
           }
         }
       }
@@ -1633,7 +1633,7 @@ export default {
         border-right: 2px solid #14161B;
         &_block{
           width: 100%;
-          padding: 65/1920*100vw;
+          padding: vwDesk(65);
           border-bottom: 4px solid #14161B;
           flex: 1;
           &:last-child{
@@ -1643,7 +1643,7 @@ export default {
             font-family: 'Manrope', sans-serif !important;
             font-style: normal !important;
             font-weight: bold !important;
-            font-size: $h2FS  !important;
+            font-size: $fs-48  !important;
             line-height: 1;
             /* or 47px */
 
@@ -1655,7 +1655,7 @@ export default {
             font-family: 'Manrope', sans-serif !important;
             font-style: normal !important;
             font-weight: 500 !important;
-            font-size: $h5FS  !important;
+            font-size: $fs-24  !important;
             line-height: 1;
             /* or 23px */
 

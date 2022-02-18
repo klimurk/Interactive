@@ -126,12 +126,12 @@
           </defs>
         </svg>
       </div>
-      <p class="underline">
+      <div class="underline">
         {{ underline }}
         <a href="">
           {{ underlineLink }}
         </a>
-      </p>
+      </div>
     </div>
   </div>
 </template>
@@ -182,7 +182,7 @@ export default {
   .block1{
     @include makeitflex(row, space-between);
     flex-wrap: wrap;
-    padding: 60/1920*100vw 50/1920*100vw 0;
+    padding: vwDesk(60) vwDesk(50) 0;
     // padding: 0 ;
     position: relative;
     z-index: 1;
@@ -194,17 +194,17 @@ export default {
       z-index: -1;
     }
     .infoImg{
-      max-width: 700/1920*100vw;
-      margin-bottom: 90/1920*100vw;
-      margin-right: 115/1920*100vw;
+      max-width: vwDesk(700);
+      margin-bottom: vwDesk(90);
+      margin-right: vwDesk(115);
     }
     .infoBlock{
-      max-width: 962/1920*100vw;
+      max-width: vwDesk(962);
       .title{
         font-family: 'Manrope', sans-serif !important;
         font-style: normal !important;
         font-weight: bold !important;
-        font-size: $h5FS !important;
+        font-size: $fs-24 !important;
         line-height: 100%;
         /* identical to box height, or 24px */
 
@@ -219,7 +219,7 @@ export default {
         font-family: 'Manrope', sans-serif !important;
         font-style: normal !important;
         font-weight: bold !important;
-        font-size: $h5FS !important;
+        font-size: $fs-24 !important;
         line-height: 100%;
         /* identical to box height, or 24px */
 
@@ -231,12 +231,12 @@ export default {
         .btn_download{
           @include makeitflex(row, flex-start);
           padding: 16px 30px;
-          margin-right: 70/1920*100vw;
+          margin-right: vwDesk(70);
           text-transform: uppercase;
           >svg{
-            width: 24/1920*100vw;
-            height: 24/1920*100vw;
-            margin-left: 16/1920*100vw;
+            width: vwDesk(24);
+            height: vwDesk(24);
+            margin-left: vwDesk(16);
           }
         }
       }
@@ -247,23 +247,23 @@ export default {
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
     font-weight: normal !important;
-    font-size: $h7FS !important;
+    font-size: $fs-14 !important;
     line-height: 100%;
     /* or 14px */
 
     text-align: center;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    max-width: 1840/1920*100vw;
+    max-width: vwDesk(1840);
     margin: 0 auto;
-    margin-bottom: 75/1920*100vw;
+    margin-bottom: vwDesk(75);
     >a{
       background: linear-gradient(174.33deg, #29649B 2.19%, #00FDDF 99.09%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
       background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
       // position: relative;
-      // transition: opacity $transition_time $transition_anim_type;
+      // transition: opacity $anim-time $anim-type;
       // z-index: 1;
       // &:hover{
       //   background: linear-gradient(174.33deg, #29649B 2.19%, #00FDDF 99.09%), linear-gradient(0deg, #FFFFFF, #FFFFFF);

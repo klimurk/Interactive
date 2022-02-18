@@ -1,16 +1,24 @@
-
 @mixin social__link($clr1, $bcgclr1, $clr2, $bcgclr2) {
-    background-color: $bcgclr1;
-    fill: $clr1;
-    transition: fill $transition_time linear, background-color $transition_time linear;
-    &:hover {
-        fill: $clr2;
-        background-color: $bcgclr2;
-    }
+  background-color: $bcgclr1;
+  fill: $clr1;
+  transition: fill $anim-time linear, background-color $anim-time linear;
+  &:hover {
+    fill: $clr2;
+    background-color: $bcgclr2;
+  }
 }
 
 @mixin makeitflex($direction, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@function vwMob($width) {
+  $result: $width/390 * 100vw;
+  @return $result;
+}
+@function vwDesk($width) {
+  $result: $width/1920 * 100vw;
+  @return $result;
 }

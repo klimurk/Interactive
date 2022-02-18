@@ -320,7 +320,6 @@ export default {
   watch: {},
   created () {},
   mounted () {
-    console.log(this.$route.params.lesson)
   },
   beforeDestroy () {
   },
@@ -331,38 +330,38 @@ export default {
 
 <style lang="scss" scoped>
 .instrumentPage{
-  margin: 70/1920*100vw 210/1920*100vw ;
+  margin: vwDesk(70) vwDesk(210) ;
   .title{
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
     font-weight: 800 !important;
-    font-size: $h2FS !important;
+    font-size: $fs-48 !important;
     line-height: 100%;
     /* or 48px */
     letter-spacing: 0.05em !important;
     text-transform: capitalize;
     text-align: center;
-    margin-bottom: 80/1920*100vw;
+    margin-bottom: vwDesk(80);
   }
   .videoBlock{
     .gtitle{
       font-family: 'Manrope', sans-serif !important;
       font-style: normal !important;
       font-weight: 600 !important;
-      font-size: $h1FS  !important;
+      font-size: $fs-64  !important;
       line-height: 87/64*1;
-      margin-bottom: 120/1920*100vw;
+      margin-bottom: vwDesk(120);
     }
     .videos{
-      margin: 0 130/1920*100vw;
+      margin: 0 vwDesk(130);
       @include makeitflex(row, flex-start);
       flex-wrap: wrap;
       .vidblock{
         width: 1/3*100%;
-        padding: 0 40/1920*100vw;
-        margin-bottom: 120/1920*100vw;
+        padding: 0 vwDesk(40);
+        margin-bottom: vwDesk(120);
         iframe{
-          height: 400/1920*100vw;
+          height: vwDesk(400);
           width: 100%;
         }
       }

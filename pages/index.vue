@@ -1,35 +1,34 @@
 <template>
   <div>
     <div class="mainPage">
-      <div class="mainPage_block1">
+      <div class="b1">
         <video autoplay playsinline muted loop poster="~/assets/images/temp/mainBlock1.png">
           <source src="~/assets/video/main/block1.mp4" type="video/mp4">
         </video>
-        <div class="mainPage_block1_description">
-          <p class="title">
-            {{ datablock1.title }}
-          </p>
-          <br>
+        <div class="bTitle b1__bTitle b1__text--pos">
+          {{ datablock1.title }}
+        </div>
+        <div
+          class="bBigText b1__bBigText"
+          :class="{ 'b1__text--pos': !mobile }"
+        >
           <p>
             {{ datablock1.text }}
           </p>
           <br>
-          <a href="">
+          <a class="link" href="">
             {{ datablock1.btn_text }}
           </a>
         </div>
       </div>
-      <div class="mainPage_block2">
-        <div>
-          <p class="title">
-            {{ datablock1.title }}
-          </p>
-          <p class="text">
-            {{ datablock1.text }}
-          </p>
-        </div>
-        <!-- <v-img lazy-src="/assets/images/temp/mainBlock2.png" :src="require('~/assets/images/temp/mainBlock2.png')" alt="" /> -->
-        <div class="tradingview">
+      <div class="b2">
+        <p class="bTitle b2__bTitle">
+          {{ datablock2.title }}
+        </p>
+        <p v-if="!mobile" class="bSubtitle b2__bSubtitle">
+          {{ datablock2.text }}
+        </p>
+        <div class="b2__tradingView">
           <!-- TradingView Widget BEGIN -->
           <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget" />
@@ -178,21 +177,23 @@
           </div>
           <!-- TradingView Widget END -->
         </div>
+        <p v-if="mobile" class="bSubtitle b2__bSubtitle">
+          {{ datablock2.text }}
+        </p>
       </div>
-      <div id="block3" class="mainPage_block3">
-        <p class="title">
+      <div id="block3" class="b3">
+        <p class="bTitle b3__bTitle b3__bTitle--upper">
           {{ datablock3.title }}
         </p>
-        <p class="text">
+        <p class="bSubtitle b3__bSubtitle b3__bSubtitle--upper">
           {{ datablock3.text }}
         </p>
         <v-img
           id="block3_full"
           lazy-src="/assets/images/sheets/Main/block3/full.png"
           :src="require('/assets/images/sheets/Main/block3/full.png')"
-          width="74vw"
           alt=""
-          class="full"
+          class="b3__img b3__img--full"
         />
         <v-img
           v-for="image in datablock3.images"
@@ -203,9 +204,10 @@
           width="74vw"
           height="0,05989vw"
           alt=""
+          class="b3__img"
           :class="{
-            left: image.cls=='left',
-            right: image.cls == 'right'
+            'b3__img--left': image.cls=='left',
+            'b3__img--right': image.cls == 'right'
           }"
         />
       </div>
@@ -395,6 +397,9 @@ export default {
     }
   },
   computed: {
+    mobile () {
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+    }
   },
   watch: {
     id (value) {
@@ -414,7 +419,6 @@ export default {
     window.addEventListener('scroll', this.block3ScrollEvent)
   },
   beforeUpdate () {
-    console.log('tv-embed-widget-wrapper__body', document.getElementsByClassName('tv-embed-widget-wrapper__body')[0])
     document.getElementsByClassName('tv-embed-widget-wrapper__body')[0].style.border = '0'
   },
   beforeDestroy () {
@@ -467,59 +471,110 @@ export default {
 <style scoped lang="scss">
 
 // @import url('~/assets/scss/abstracts/_variables.scss');
+.bTitle{
+  font-size: $fs-36;
+  line-height: 1.25;
+  font-weight: 800;
+  @media(max-width:$w-adapt){
+    font-size: $fs-18-m;
+  }
+}
+.bSubTitle{
+
+  font-size: $fs-24;
+  font-weight: 500;
+  line-height: 32/24*1;
+  font-family: Manrope;
+  font-style: normal;
+  letter-spacing: 5%;
+  @media(max-width:$w-adapt){
+    font-size: $fs-14-m;
+  }
+
+}
+.link{
+  color: $clr-text-1;
+  transition: color $anim-time $anim-type;
+  &:hover{
+      color: $clr-btn-1;
+  }
+}
+.bBigText{
+  font-size: $fs-18;
+  font-weight: normal;
+  @media(max-width:$w-adapt){
+    font-size: $fs-14-m;
+  }
+}
 .mainPage{
-  &_block1{
-    padding: 30px;
-    border-radius: 40px;
+  & .b1{
+    margin: vwDesk(30);
+    border-radius: vwDesk(40);
     position: relative;
+    @media(max-width:$w-adapt){
+      margin: vwMob(48+15) vwMob(10) vwMob(15) ;
+    }
     &>video{
       width: 100%;
-      border-radius: 40px;
+      border-radius: vwDesk(40);
     }
-    &_description{
+    &__text--pos{
       position: absolute;
-      right: 137/1840*100%;
-      top: 400/1022*100%;
-      max-width: 666/1840*100%;
-      font-size: $h6FS !important;
-      .title{
-        font-family: 'Manrope', sans-serif  !important;
-        font-size: $h4FS !important;
-        line-height: 1.25;
+      right: vwDesk(47);
+      max-width: vwDesk(885);
+      @media(max-width:$w-adapt){
+        rigth: vwMob(15);
+        max-width: vwMob(158)
       }
-      >a{
-        color: $textColor1;
-        transition: color $transition_time $transition_anim_type;
-        &:hover{
-            color: $btncolor1;
-        }
+    }
+    &__bTitle{
+      top: vwDesk(400);
+      @media(max-width:$w-adapt){
+        top: vwMob(35);
+      }
+    }
+    &__bBigText{
+      top: vwDesk(550);
+
+      @media(max-width:$w-adapt){
+        top: 0;
+        max-width: 100%;
+        padding: vwMob(20) vwMob(14);
+
       }
     }
   }
-  &_block2{
-    padding: 30px 70px;
-    .text{
-      text-align: center;
-      font-family: 'Raleway', sans-serif;
-      margin: 0 auto 48/1920*100vw;
-
-      max-width: 1620/1920*100vw;
+  & .b2{
+    padding: vwDesk(30) vwDesk(70);
+    @media(max-width:$w-adapt){
+      padding:vwMob(8) vwMob(25) vwMob(13);
     }
-    .title{
-      max-width: 1620/1920*100vw;
+    &__bSubtitle{
       text-align: center;
-      font-family: 'Manrope', sans-serif  !important;
-      margin: 0 auto 48/1920*100vw;
-      font-size: $h4FS  !important;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: 0.05em  !important;
+      margin: 0 auto vwDesk(48);
+      max-width: vwDesk(1620);
+      @media(max-width:$w-adapt){
+        margin:0;
+        text-align:left;
+      }
     }
-    .tradingview{
-      height: 912/1920*100vw;
-      border-radius: 40px;
+    &__bTitle{
+      max-width: vwDesk(1620);
+      text-align: center;
+      margin: 0 auto vwDesk(48);
+      @media(max-width:$w-adapt){
+        max-width: 100%;
+      }
+    }
+    &__tradingView{
+      height: vwDesk(912);
+      border-radius: vwDesk(40);
       overflow: hidden;
       border: 2px solid #434651;
+      @media(max-width:$w-adapt){
+        margin-bottom: vwMob(15);
+        height: vwMob(190);
+      }
       & .tradingview-widget-container{
           & .tv-embed-widget-wrapper {
             width: 60px !important;
@@ -531,40 +586,44 @@ export default {
       }
     }
   }
-  &_block3{
-    margin-bottom: 90px;
+  & .b3{
+    margin-bottom: vwDesk(90);
     position: relative;
     overflow: hidden;
-    & .left{
-      transform: translateX(-20%);
-      transition: transform .8s linear;
+    &__img{
+      width:vwDesk(1422);
+      &--left{
+        transform: translateX(-20%);
+        transition: transform .8s linear;
+      }
+      &--right{
+        transform: translateX(20%);
+        transition: transform .8s linear;
+      }
+      &--full{
+        display: none;
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+        transform: translateX(-50%);
+      }
     }
-    & .right{
-      transform: translateX(20%);
-      transition: transform .8s linear;
-    }
-    & .full{
-      display: none;
-      position: absolute;
-      left: 50%;
-      bottom: 0%;
-      transform: translateX(-50%);
-    }
-    & .title{
-      font-family: 'Manrope', sans-serif  !important;
-      font-size: $h4FS !important;
-      line-height: 1.5;
-      font-weight: 800;
-      letter-spacing: 0.05em !important;
+
+    &__bTitle{
       text-align: center;
+      @media(max-width:$w-adapt){
+        margin-bottom: vwMob(18);
+      }
+      &--upper{
+        text-transform: uppercase;
+      }
     }
-    & .text{
-      font-size: $h5FS !important;
-      font-weight: 600;
-      line-height: 1.5;
-      letter-spacing: 0.05em !important;
+    &__bSubtitle{
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom:vwDesk(60);
+      &--upper{
+        text-transform: uppercase;
+      }
     }
     & .v-image{
       margin: 0 auto;
@@ -584,11 +643,11 @@ export default {
       z-index: 1;
       position: relative;
       border-bottom: 4px #14161B solid ;
-      transition: display $transition_time !important ;
+      transition: display $anim-time !important ;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
       &::after{
         opacity: 0;
-        transition: opacity $transition_time linear !important ;
+        transition: opacity $anim-time linear !important ;
         filter: blur(64px);
         position: absolute;
         left: 0;
@@ -604,14 +663,14 @@ export default {
       & .title{
         font-family: 'Manrope', sans-serif  !important;
         font-weight: 600 !important;
-        font-size: $h4FS !important;
-        margin-bottom: $h6FS !important;
+        font-size: $fs-36 !important;
+        margin-bottom: $fs-18 !important;
         z-index: 10;
       }
       & .text{
         font-family: 'Manrope', sans-serif  !important;
         font-weight: 300 !important;
-        font-size: $h6FS !important;
+        font-size: $fs-18 !important;
         z-index: 10;
       }
     }
@@ -631,7 +690,7 @@ export default {
       }
     }
     .wide {
-      min-width:1125.5/1920*100%;
+      min-width: vwDesk(1125.5);
       border-right: 4px #14161B solid ;
       background-image: url('~/assets/images/sheets/Main/block4/col1.svg');
       & .mainPage_block4_item{
@@ -639,7 +698,7 @@ export default {
       }
     }
     .tall {
-      min-width: 617/1920*100%;
+      min-width: vwDesk(617);
       border-left: 4px #14161B solid ;
       background-image: url('~/assets/images/sheets/Main/block4/col3.svg');
       & .mainPage_block4_item{
@@ -658,10 +717,10 @@ export default {
     @include makeitflex(row, space-between);
     background-image: url('~/assets/images/sheets/Main/block5/background.svg');
     background-size: contain;
-    height: 584px;
+    height: vwDesk(584);
     width: 100%;
-    margin-bottom: 80px;
-    padding: 307px 200px 0;
+    margin-bottom: vwDesk(80);
+    padding: vwDesk(307) vwDesk(200) 0;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -672,7 +731,7 @@ export default {
     }
     &::after{
       opacity: 0;
-      transition: opacity $transition_time linear !important ;
+      transition: opacity $anim-time linear !important ;
       position: absolute;
       left: 0;
       top: 0;
@@ -690,13 +749,13 @@ export default {
       .title{
         font-family: 'Manrope', sans-serif  !important;
         font-weight: bold !important;
-        font-size: $h1FS !important ;
+        font-size: $fs-64 !important ;
         line-height: 87/64*1 !important;
         font-feature-settings: 'pnum' on, 'lnum' on;
       }
       .text{
         font-weight: 500 !important;
-        font-size: $h5FS !important;
+        font-size: $fs-24 !important;
         line-height: 33/24*1 !important;
         font-feature-settings: 'pnum' on, 'lnum' on;
         max-width: 67%;
@@ -710,13 +769,13 @@ export default {
     & .text{
       font-family: 'Manrope', sans-serif  !important;
       font-weight: 500 !important;
-      font-size: $h7FS !important;
+      font-size: $fs-14 !important;
       margin-bottom: 10px;
     };
     & .title{
       font-family: 'Manrope', sans-serif  !important;
       font-weight: 800 !important;
-      font-size: $h2FS !important;
+      font-size: $fs-48 !important;
     };
   }
 }

@@ -135,7 +135,7 @@ export default {
       margin: 30px auto 65px;
     }
     & .text{
-      max-width: 1629/1920*100vw;
+      max-width: vwDesk(1629);
       margin: 25px auto 50px;
     }
     &_section{
@@ -143,21 +143,21 @@ export default {
       margin-bottom: 30px;
       &_header{
         @include makeitflex(row, space-between);
-        width: 800/1920*100vw;
+        width: vwDesk(800);
         margin: 0 auto;
         margin-bottom: 30px;
-        transition: all $transition_time $transition_anim_type;
+        transition: all $anim-time $anim-type;
         & >p{
           font-family: 'Raleway', sans-serif !important;
           font-style: normal !important;
           font-weight: bold !important;
-          font-size: $h5FS !important;
+          font-size: $fs-24 !important;
           text-transform: uppercase;
-          transition: background $transition_time $transition_anim_type;
+          transition: background $anim-time $anim-type;
         }
         & >button{
-          font-size: $h4FS;
-          transition: all $transition_time $transition_anim_type;
+          font-size: $fs-36;
+          transition: all $anim-time $anim-type;
         }
         &:hover{
           & >p{

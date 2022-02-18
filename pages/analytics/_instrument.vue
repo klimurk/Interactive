@@ -114,23 +114,23 @@ export default {
 
 <style lang="scss" scoped>
 .instrumentPage{
-  margin: 70/1920*100vw 125/1920*100vw ;
+  margin: vwDesk(70) vwDesk(125) ;
   .title{
     font-family: 'Manrope', sans-serif !important;
     font-style: normal !important;
     font-weight: 800 !important;
-    font-size: $h2FS !important;
+    font-size: $fs-48 !important;
     line-height: 100%;
     /* or 48px */
 
     letter-spacing: 0.05em !important;
     text-transform: capitalize;
     text-align: center;
-    margin-bottom: 80/1920*100vw;
+    margin-bottom: vwDesk(80);
   }
   & iframe{
     width: 100%;
-    min-height: 550/1920*100vw;
+    min-height: vwDesk(550);
   }
 }
 </style>

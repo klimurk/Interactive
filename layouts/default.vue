@@ -10,11 +10,11 @@
         </svg>
         <p>Lorem ipsum</p>
       </NuxtLink>
-      <div class="header_nav">
+      <div class="header_nav ">
         <ul class="header_nav_lvl0">
           <li v-for="link0 in header.linksLvl0" :key="link0.name">
             <NuxtLink
-              v-if="link0.link !=''"
+              v-if="link0.link != ''"
               :to="link0.link"
               class="btn_nav transparent"
               @click="nav_reset"
@@ -22,37 +22,67 @@
               {{ link0.name }}
             </NuxtLink>
             <button
-              v-if="link0.link ==''"
+              v-if="link0.link == ''"
               class="btn_nav transparent link_lvl0"
-              @click="navLvl0_click(link0); link0.linksLvl1IsOpen = !link0.linksLvl1IsOpen"
+              @click="
+                navLvl0_click(link0);
+                link0.linksLvl1IsOpen = !link0.linksLvl1IsOpen;
+              "
             >
               {{ link0.name }} >
               <!-- @click="navLvl0_click(link0.linksLvl1IsOpen)" -->
             </button>
-            <ul v-if="link0.linkcount >0" class="header_nav_lvl1" :class="{ visible:link0.linksLvl1IsOpen }">
-              <li v-for="link1 in link0.linksLvl1" :key="link1.name" class="link">
+            <ul
+              v-if="link0.linkcount > 0"
+              class="header_nav_lvl1"
+              :class="{ visible: link0.linksLvl1IsOpen }"
+            >
+              <li
+                v-for="link1 in link0.linksLvl1"
+                :key="link1.name"
+                class="link"
+              >
                 <a
-                  v-if="link1.link !=''"
+                  v-if="link1.link != ''"
                   :to="link1.link"
-                  class="btn_nav  link_lvl1"
-                  @click.prevent="openPage(link0.linkParent + link1.link); nav_reset()"
+                  class="btn_nav link_lvl1"
+                  @click.prevent="
+                    openPage(link0.linkParent + link1.link);
+                    nav_reset();
+                  "
                 >
                   {{ link1.name }}
                 </a>
                 <button
-                  v-if="link1.link ==''"
+                  v-if="link1.link == ''"
                   class="btn_nav transparent link_lvl1"
-                  @click="navLvl1_click(link1); link1.linksLvl2IsOpen=!link1.linksLvl2IsOpen"
+                  @click="
+                    navLvl1_click(link1);
+                    link1.linksLvl2IsOpen = !link1.linksLvl2IsOpen;
+                  "
                 >
                   {{ link1.name }} >
                 </button>
-                <ul v-if="link0.linkcount>1" class="header_nav_lvl2" :class="{ visible:link1.linksLvl2IsOpen }">
-                  <li v-for="link2 in link1.linksLvl2" :key="link2.name" class="link">
+                <ul
+                  v-if="link0.linkcount > 1"
+                  class="header_nav_lvl2"
+                  :class="{ visible: link1.linksLvl2IsOpen }"
+                >
+                  <li
+                    v-for="link2 in link1.linksLvl2"
+                    :key="link2.name"
+                    class="link"
+                  >
                     <a
-                      v-if="link2.link !=''"
+                      v-if="link2.link != ''"
                       :to="link2.link"
-                      class="btn_nav  link_lvl2"
-                      @click.prevent="openPage(link0.linkParent + link1.linkParent + link2.link); nav_reset()"
+                      class="btn_nav link_lvl2"
+                      @click.prevent="
+                        openPage(
+                          link0.linkParent + link1.linkParent + link2.link
+                        );
+                        nav_reset();
+                      "
                     >
                       {{ link2.name }}
                     </a>
@@ -69,6 +99,11 @@
           {{ header.registration }}
         </a>
       </div>
+      <button v-if="mobile" class="btn_mobile btn ">
+        <svg viewBox="0 0 20 13">
+          <path d="M0.605469 11.4805C0.605469 12.0549 1.07109 12.5205 1.64547 12.5205H18.2855C18.8598 12.5205 19.3255 12.0549 19.3255 11.4805C19.3255 10.9062 18.8598 10.4405 18.2855 10.4405H1.64547C1.07109 10.4405 0.605469 10.9062 0.605469 11.4805ZM0.605469 6.28053C0.605469 6.8549 1.07109 7.32053 1.64547 7.32053H18.2855C18.8598 7.32053 19.3255 6.8549 19.3255 6.28053C19.3255 5.70615 18.8598 5.24053 18.2855 5.24053H1.64547C1.07109 5.24053 0.605469 5.70615 0.605469 6.28053ZM1.64547 0.0405273C1.07109 0.0405273 0.605469 0.506151 0.605469 1.08053C0.605469 1.6549 1.07109 2.12053 1.64547 2.12053H18.2855C18.8598 2.12053 19.3255 1.6549 19.3255 1.08053C19.3255 0.506151 18.8598 0.0405273 18.2855 0.0405273H1.64547Z" fill="white" />
+        </svg>
+      </button>
     </header>
     <v-main>
       <v-container>
@@ -93,7 +128,7 @@
         </div>
         <div class="footer_contacts">
           <div class="footer_contacts_item">
-            <svg viewBox="0 0 31 30">
+            <svg viewBox="0 0 31 30" class="only_desktop">
               <path
                 d="M6.7403 12.6385C9.07656 17.23 12.8405 20.9777 17.432 23.3302L21.0013 19.7609C21.4393 19.3229 22.0883 19.1768 22.6561 19.3715C24.4732 19.9718 26.4363 20.2963 28.4481 20.2963C29.3404 20.2963 30.0705 21.0264 30.0705 21.9187V27.5809C30.0705 28.4732 29.3404 29.2033 28.4481 29.2033C13.2137 29.2033 0.867188 16.8568 0.867188 1.62241C0.867188 0.730083 1.59727 0 2.48959 0H8.16802C9.06034 0 9.79042 0.730083 9.79042 1.62241C9.79042 3.65041 10.1149 5.5973 10.7152 7.4144C10.8937 7.98224 10.7639 8.61498 10.3096 9.06925L6.7403 12.6385Z"
               />
@@ -101,7 +136,7 @@
             <a href="">(0321) 645-798-021</a>
           </div>
           <div class="footer_contacts_item">
-            <svg viewBox="0 0 31 30">
+            <svg viewBox="0 0 31 30" class="only_desktop">
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
@@ -111,7 +146,7 @@
             <a href="">354 King Street, Melbourne Victoria 5467 Australia</a>
           </div>
           <div class="footer_contacts_item">
-            <svg viewBox="0 0 33 27">
+            <svg viewBox="0 0 33 27" class="only_desktop">
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
@@ -138,9 +173,9 @@
         <p>Предупреждение:</p>
         <p>
           Операции, предлагаемые данным сайтом, могут осуществляться
-          исключительно полностью дееспособными совершеннолетними (достигшими
-          18 лет) лицами. Операции с финансовыми инструментами, предлагаемые
-          данным сайтом, могут считаться операциями с высоким риском.
+          исключительно полностью дееспособными совершеннолетними (достигшими 18
+          лет) лицами. Операции с финансовыми инструментами, предлагаемые данным
+          сайтом, могут считаться операциями с высоким риском.
         </p>
         <p>
           При совершении таких операций существуют риски частичной либо полной
@@ -158,8 +193,7 @@
         <p>
           Веб-сайт spacefx.org является собственностью компании PSC TECHNOLOGY
           DEVELOPMENT CONSULTING S.R.L., Romania, Bucharest Sector 1, Strada
-          Avionului, Nr. 26, Biroul B, floor 1, регистрационный номер
-          43322212.
+          Avionului, Nr. 26, Biroul B, floor 1, регистрационный номер 43322212.
         </p>
         <p>
           Компания [company] а, также веб-сайт spacefx.org, не оказывают
@@ -210,15 +244,13 @@ export default {
             linksLvl1IsOpen: false,
             linkParent: 'education',
             linkcount: 2,
-            linksLvl1:
-            [
+            linksLvl1: [
               {
                 name: 'Курс',
                 link: '',
                 linkParent: '/courses',
                 linksLvl2IsOpen: false,
-                linksLvl2:
-                [
+                linksLvl2: [
                   {
                     name: 'Курс "Начинающим"',
                     link: '/beginner'
@@ -234,8 +266,7 @@ export default {
                 link: '',
                 linkParent: '/lessons',
                 linksLvl2IsOpen: false,
-                linksLvl2:
-                [
+                linksLvl2: [
                   {
                     name: 'Начинающим',
                     link: '/beginner'
@@ -258,8 +289,7 @@ export default {
             linkParent: 'analytics',
             linksLvl1IsOpen: false,
             linkcount: 2,
-            linksLvl1:
-            [
+            linksLvl1: [
               {
                 name: 'Сигналы',
                 link: '/signals'
@@ -274,8 +304,7 @@ export default {
                 // linkParent: '/instruments',
                 linkParent: '',
                 linksLvl2IsOpen: false,
-                linksLvl2:
-                [
+                linksLvl2: [
                   {
                     name: 'Аналитические',
                     link: '/analytic'
@@ -299,8 +328,7 @@ export default {
                 link: '',
                 linkParent: '/publications',
                 linksLvl2IsOpen: false,
-                linksLvl2:
-                [
+                linksLvl2: [
                   {
                     name: 'Новости',
                     link: '/news'
@@ -385,6 +413,11 @@ export default {
       title: 'Vuetify.js'
     }
   },
+  computed: {
+    mobile () {
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+    }
+  },
   methods: {
     openPage (link) {
       this.$router.push('/' + link)
@@ -422,28 +455,27 @@ export default {
 }
 </script>
 
-<style scoped lang='scss'>
-@import url('~/assets/scss/abstracts/_variables.scss');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.container{
+<style scoped lang="scss">
+@import url("~/assets/scss/abstracts/_variables.scss");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.container {
   max-width: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
 }
-.theme--dark.v-application{
-  background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
-  font-family: 'Manrope', sans-serif;
+.theme--dark.v-application {
+  background: linear-gradient(107.15deg, #1b1b1b 0%, #252c38 100%);
+  font-family: "Manrope", sans-serif !important;
   font-size: 16px;
-  line-height: 22.5/18*1;
+  line-height: 22.5/18 * 1;
   font-weight: normal;
-  color: $textColor1;
+  color: $clr-text-1;
 }
-.v-application--wrap{
-
-  background: linear-gradient(107.15deg, #1B1B1B 0%, #252C38 100%);
-  font-family: 'Manrope', sans-serif;
+.v-application--wrap {
+  background: linear-gradient(107.15deg, #1b1b1b 0%, #252c38 100%);
+  font-family: "Manrope", sans-serif !important;
   font-weight: normal;
 
   @include makeitflex(column, flex-start);
@@ -454,79 +486,119 @@ export default {
   z-index: 1000;
   position: fixed;
   left: 50%;
-  transform: translate(-50%, 60px);
+  top: vwDesk(60);
+  transform: translateX(-50%);
   z-index: 1000000;
 
   align-items: center;
-  height: 109/1920*100vw;
-  width: 1762/1920*100%;
+  height: vwDesk(109);
+  width: vwDesk(1762);
   border: 1px solid;
-  border-radius: 25px;
+  border-radius: vwDesk(25);
   backdrop-filter: blur(5px);
   background: rgba(208, 208, 208, 0.2);
-  border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+  border-image-source: linear-gradient(180deg,
+    $clr-header-1 0%,
+    $clr-header-2 100%
+  );
+  @media (max-width: $w-adapt){
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: vwMob(48);
+    transform: none;
+    background: rgba(208, 208, 208, 0.2);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 0  0 vwMob(15) vwMob(15)  ;
+  }
+  .btn_mobile{
+    margin: auto vwMob(15);
+    >svg{
+      width: vwMob(18);
+    }
+  }
   &_logo {
     @include makeitflex(row, flex-start);
     align-items: center;
-    height: 61px;
-    padding: 37px;
+    height: vwDesk(61);
+    padding: vwDesk(37);
     text-decoration: none;
     text-transform: uppercase;
     font-style: normal;
-    font-family: 'Manrope', sans-serif;
-    font-size: $h5FS;
+    // font-family: "Manrope", sans-serif;
+    font-size: $fs-24;
     font-weight: bold;
-    color: #E2E3E3;
+    color: #e2e3e3;
     cursor: pointer;
-    transition: fill $transition_time linear, box-shadow $transition_time linear, color $transition_time linear;
-    fill:#E2E3E3;
-    &:hover{
-      color: #1CB0FF;
+    transition: fill $anim-time linear, box-shadow $anim-time linear,
+      color $anim-time linear;
+    fill: #e2e3e3;
+    &:hover {
+      color: $clr-btn-1;
       cursor: pointer;
-      fill: #1CB0FF;
-      >svg{
-        >circle{
+      fill: $clr-btn-1;
+      > svg {
+        > circle {
           box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
-        >path{
+        > path {
           box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
         }
       }
     }
-    >svg{
-      margin-right: 20px;
-      height: 52/1920*100vw;
+    @media (max-width: $w-adapt){
+      height: vwMob(48);
+      font-size: $fs-14-m;
     }
-    >p{
+    > svg {
+      margin-right: vwDesk(20);
+      height: vwDesk(52);
+      @media (max-width: $w-adapt){
+        height: vwMob(29);
+      margin-right: vwMob(8);
+      }
+    }
+    > p {
       cursor: pointer;
+      @media (max-width: $w-adapt){
+        max-width: vwMob(51);
+      }
     }
   }
-  &_nav{
+  &_nav {
     @include makeitflex(row, flex-start);
-      align-items: center;
-    &_lvl0{
+    align-items: baseline;
+    @media (max-width: $w_adapt) {
+      display: none;
+    }
+    &_lvl0 {
       align-items: center;
       @include makeitflex(row, flex-start);
     }
-    &_lvl1{
+    &_lvl1 {
       backdrop-filter: blur(5px);
       background: rgba(208, 208, 208, 0.2);
       position: absolute;
       bottom: 0;
-      transform: translate(-10%,101%);
+      transform: translate(-10%, 101%);
       text-align: left;
       display: none;
       border: 1px solid;
       border-radius: 25px;
       padding: 1vw !important;
-      border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
-
+      border-image-source: linear-gradient(
+        180deg,
+        $clr-header-1 0%,
+        $clr-header-2 100%
+      );
     }
-    &_lvl2{
+    &_lvl2 {
       position: absolute;
       right: 0;
       top: 50%;
-      transform: translate(111%,-15%);
+      transform: translate(111%, -15%);
       text-align: left;
       width: auto;
       display: none;
@@ -535,107 +607,135 @@ export default {
       padding: 1vw !important;
       backdrop-filter: blur(5px);
       background: rgba(208, 208, 208, 0.2);
-      border-image-source: linear-gradient(180deg, #6A6868 0%, rgba(26, 32, 44, 0) 100%);
+      border-image-source: linear-gradient(
+        180deg,
+        $clr-header-1 0%,
+        $clr-header-2 100%
+      );
     }
   }
-  .link{
+  .link {
     margin-bottom: 1vw;
     position: relative;
-    &:last-child{
+    &:last-child {
       margin-bottom: 0;
     }
-    &_lvl0{
+    &_lvl0 {
       position: relative;
     }
-    &_lvl1{
+    &_lvl1 {
       position: relative;
       margin-left: 0;
       white-space: nowrap;
       width: 100%;
       text-align: left;
     }
-    &_lvl2{
+    &_lvl2 {
       text-align: left;
       width: 100%;
       margin-left: 0;
     }
   }
+}
 
-}
-.visible{
-  display: block;
-}
 .footer {
-    @include makeitflex(row, space-between);
-    margin-top: auto;
-    border-radius: 40px;
-    background: linear-gradient(357.58deg, #0F162F -2.27%, #0E141E 93.92%);
-    padding: 65/1920*100vw 45/1920*100vw 65/1920*100vw 90/1920*100vw;
-    text-decoration: none;
-    font-family: 'Manrope', sans-serif !important;
-    font-size: $h7FS;
-    font-weight: 600;
-    color: $textColor1;
-    align-items: normal;
+  @include makeitflex(row, space-between);
+  margin-top: auto;
+  border-radius: vwDesk(40);
+  background: linear-gradient(357.58deg, #0f162f -2.27%, #0e141e 93.92%);
+  padding: vwDesk(65) vwDesk(45) vwDesk(65) vwDesk(90);
+  text-decoration: none;
+  // font-family: "Manrope", sans-serif !important;
+  font-size: $fs-14;
+  font-weight: 600;
+  color: $clr-text-1;
+  align-items: normal;
 
-    backdrop-filter: blur(24px);
-    fill:$textColor1;
-    &_col{
-        @include makeitflex(column, space-between);
-        max-width: 978/1920*100vw;
-        >p{
-        letter-spacing: 0px;
-        line-height: 20/16*1;
-        font-weight: 600;
+  backdrop-filter: blur(24px);
+  fill: $clr-text-1;
 
-        }
+  @media (max-width: $w-adapt){
+    padding: vwMob(20) vwMob(30);
+    font-size: $fs-14-m;
+  }
+  &_col {
+    @include makeitflex(column, space-between);
+    max-width: vwDesk(978);
+    @media (max-width: $w-adapt){
+      max-width: 100%;
+      margin-bottom: vwMob(25) ;
     }
-    &_contacts{
-        @include makeitflex(column,flex-start);
-        &_item{
-
-            @include makeitflex(row,flex-start);
-            align-items: center;
-            margin-top: 30px;
-            transition: fill $transition_time linear, color $transition_time linear;
-            >svg{
-                margin-right: 25px;
-                width: 30px;
-                fill: $textColor1;
-            }
-            >a{
-
-                text-decoration: none;
-                color: $textColor1;
-            }
-            &:hover{
-                >svg,>a{
-                    color: #1CB0FF;
-                    fill: #1CB0FF;
-                }
-            }
-        }
+    &:first-child{
+      @media (max-width:$w-adapt){
+        max-width: 50%;
+      }
     }
-    &_menu{
-      text-transform: uppercase;
-      font-size: $h5FS;
-      font-weight: 700;
-      &_list{
-        list-style: disc !important;
-        >li{
-          margin-top: 35px;
-          >a{
-            transition: fill $transition_time linear, color $transition_time linear;
-            text-decoration: none;
-            color: $textColor1;
-            &:hover{
-                color: #1CB0FF;
-                cursor: pointer;
-            }
+    > p {
+      line-height: 20/16 * 1;
+      font-weight: 600;
+      @media (max-width: $w-adapt){
+        margin-bottom: vwMob(24);
+      }
+    }
+    & .footer_img{
+      @media (max-width:$w-adapt){
+        width: vwMob(100);
+      }
+    }
+  }
+  &_contacts {
+    @include makeitflex(column, flex-start);
+    &_item {
+      @include makeitflex(row, flex-start);
+      align-items: center;
+      margin-top: vwDesk(30);
+      transition: fill $anim-time $anim-type, color $anim-time $anim-type;
+      &:hover {
+        > svg,
+        > a {
+          color: $clr-btn-1;
+          fill: $clr-btn-1;
+        }
+      }
+      @media(max-width:$w-adapt){
+        margin-top: vwMob(20);
+      }
+      > svg {
+        margin-right: vwDesk(25);
+        width: vwDesk(30);
+        fill: $clr-text-1;
+      }
+      > a {
+        text-decoration: none;
+        color: $clr-text-1;
+      }
+    }
+  }
+  &_menu {
+    text-transform: uppercase;
+    font-size: $fs-24;
+    font-weight: 700;
+    @media(max-width:$w-adapt){
+      font-size: $fs-24-m;
+    }
+    &_list {
+      list-style: disc !important;
+      > li {
+        margin-top: vwDesk(35);
+        @media(max-width:$w-adapt){
+          margin-top: vwMob(25);
+        }
+        > a {
+          transition: fill $anim-time linear, color $anim-time linear;
+          text-decoration: none;
+          color: $clr-text-1;
+          &:hover {
+            color: $clr-btn-1;
+            cursor: pointer;
           }
         }
       }
     }
+  }
 }
-
 </style>

@@ -108,7 +108,7 @@ export default {
       font-family: 'Manrope', sans-serif !important;
       font-style: normal !important;
       font-weight: 800 !important;
-      font-size: $h2FS !important;
+      font-size: $fs-48 !important;
       line-height: 1;
       /* or 48px */
 
@@ -117,14 +117,14 @@ export default {
       text-transform: capitalize;
     }
     &_previews{
-      margin: 200/1920*100vw 400/1920*100vw ;
+      margin: vwDesk(200) vwDesk(400) ;
       @include makeitflex(row,space-between);
       flex-wrap: wrap;
       &_item{
-        width: 500/1920*100vw;
-        height: 500/1920*100vw;
+        width: vwDesk(500);
+        height: vwDesk(500);
         position: relative;
-        margin-bottom: 100/1920*100vw;
+        margin-bottom: vwDesk(100);
         position: relative;
         z-index: 1;
         &::after{
@@ -143,7 +143,7 @@ export default {
            linear-gradient(178.15deg, rgba(22, 25, 32, 0) -21.98%, rgba(30, 35, 46, 0.174) 12.59%, rgba(34, 53, 111, 0.18) 37.59%, rgba(16, 151, 187, 0.204) 69.41%, rgba(0, 255, 224, 0.3) 103.5%);
           filter: blur(40px);
           opacity: 0;
-          transition: opacity $transition_time $transition_anim_type;
+          transition: opacity $anim-time $anim-type;
             // linear-gradient(178.15deg, rgba(22, 25, 32, 0) -21.98%, rgba(30, 35, 46, 0.174) 12.59%, rgba(34, 53, 111, 0.18) 37.59%, rgba(16, 151, 187, 0.204) 69.41%, rgba(0, 255, 224, 0.3) 103.5%);
         }
         // &::before{
@@ -171,27 +171,27 @@ export default {
             /* Note: backdrop-filter has minimal browser support */
 
             border-radius: 20px;
-            padding: 15/1920*100vw 50% 30/1920*100vw 20/1920*100vw;
+            padding: vwDesk(15) 50% vwDesk(30) vwDesk(20);
             font-family: 'Manrope', sans-serif !important;
             font-style: normal;
             & .title{
               font-weight: bold !important;
-              font-size: $h5FS;
+              font-size: $fs-24;
               line-height: 1;
             }
             &>ul>li{
               font-weight: normal;
-              font-size: $h7FS;
+              font-size: $fs-14;
               line-height: 24/14*1;
             }
             & .item_btn{
-              color: $textColor1;
-              padding: 15/1920*100vw 40/1920*100vw;
+              color: $clr-text-1;
+              padding: vwDesk(15) vwDesk(40);
               width: fit-content;
               font-family: 'Roboto', sans-serif !important;
               font-style: normal !important;
               font-weight: bold  !important;
-              font-size: $h7FS  !important;
+              font-size: $fs-14  !important;
               letter-spacing: 0.05em;
               text-transform: uppercase;
             }
