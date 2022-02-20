@@ -5,7 +5,7 @@
         class="pageImgHead"
         :lazy-src="require('~/assets/images/sheets/Contacts/head.png')"
         :src="require('~/assets/images/sheets/Contacts/head.png')"
-        width="96%"
+
         alt=""
       />
       <p class="textTitle">
@@ -60,7 +60,7 @@
             <p>{{ datablock.contactformData.message }}</p>
             <v-textarea v-model="datablock.contactformData.inputs.message" outlined type="text" />
           </div>
-          <button class="btn_blue" @click="sendform">
+          <button class="btnBlue" @click="sendform">
             {{ datablock.contactformData.btn_send }}
           </button>
         </div>

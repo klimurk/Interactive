@@ -5,7 +5,7 @@
         class="pageImgHead"
         :lazy-src="require('~/assets/images/sheets/Documents/head.png')"
         :src="require('~/assets/images/sheets/Documents/head.png')"
-        width="96%"
+
         alt=""
       />
       <p class="textTitle">

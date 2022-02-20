@@ -4,7 +4,7 @@
       class="pageImgHead"
       lazy-src="/assets/images/sheets/Analytic/head.png"
       :src="require('/assets/images/sheets/Analytic/head.png')"
-      width="96%"
+
       alt=""
     />
     <template v-for="block in datablock">
@@ -23,7 +23,7 @@
               </p>
             </div>
             <div class="col">
-              <nuxt-link :to="block.info.linkNext" class="linkNext btn_blue">
+              <nuxt-link :to="block.info.linkNext" class="linkNext btnBlue">
                 <p>
                   {{ block.info.linkNextText }}
                 </p>
@@ -48,7 +48,7 @@
                   v-for="categoryBlck in category.categoryBlock"
                   :key="categoryBlck.nameBlock"
                   class="categoty_block"
-                  :class="{ btn_blue: categoryBlck.isActive }"
+                  :class="{ btnBlue: categoryBlck.isActive }"
                   @click="resetCategory(); categoryBlck.isActive = true"
                 >
                   <svg v-if="categoryBlck.type == 'video'" viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">

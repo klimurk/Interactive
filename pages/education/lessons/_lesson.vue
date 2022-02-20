@@ -4,7 +4,7 @@
       class="pageImgHead"
       lazy-src="/assets/images/sheets/Analytic/head.png"
       :src="require('/assets/images/sheets/Analytic/head.png')"
-      width="96%"
+
       alt=""
     />
     <template v-for="block in datablock">

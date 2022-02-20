@@ -22,3 +22,7 @@
   $result: $width/1920 * 100vw;
   @return $result;
 }
+@function vhMob($height) {
+  $result: $height/884 * 100vh;
+  @return $result;
+}

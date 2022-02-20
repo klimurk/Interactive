@@ -15,4 +15,63 @@
   font-size: $fs-24 !important;
   text-align: center;
   letter-spacing: 0.05em !important;
+  @media(max-width:$w-adapt){
+    font-size: $fs-18-m;
+  }
+}
+
+.bBigTitle{
+  font-size: $fs-48;
+  line-height: 1.25;
+  font-weight: 700;
+  @media(max-width:$w-adapt){
+    font-size: $fs-14-m;
+  }
+}
+.bTitle{
+  font-size: $fs-36;
+  line-height: 1.25;
+  font-weight: 800;
+  @media(max-width:$w-adapt){
+    font-size: $fs-18-m;
+  }
+}
+.bSubTitle{
+
+  font-size: $fs-24;
+  font-weight: 500;
+  line-height: 32/24*1;
+  font-family: Manrope;
+  font-style: normal;
+  letter-spacing: 5%;
+  @media(max-width:$w-adapt){
+    font-size: $fs-14-m;
+  }
+
+}
+.link{
+  color: $clr-text-1;
+  fill: $clr-text-1;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color $anim-time $anim-type, fill  $anim-time $anim-type;
+  &:hover{
+      color: $clr-btn-1;
+      fill: $clr-btn-1;
+  }
+}
+.bBigText{
+  font-size: $fs-18;
+  font-weight: normal;
+  @media(max-width:$w-adapt){
+    font-size: $fs-14-m;
+  }
+}
+.bSmallText{
+  font-size: $fs-14;
+  font-weight: normal;
+  @media(max-width:$w-adapt){
+    font-size: $fs-12-m;
+    font-weight: normal;
+  }
 }

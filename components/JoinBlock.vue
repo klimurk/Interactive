@@ -1,14 +1,14 @@
 <template>
   <div class="joinBlock">
-    <div class="joinBlock_anim">
+    <div id="anim" class="joinBlock__anim">
       <div
-        v-for="item in datablock6.squares"
+        v-for="item in dataJoinBlock.squares"
         :key="item.id"
-        class="joinBlock_anim_square"
+        class="joinBlock__square"
         :class="{
-          s1: item.id==0,
-          s2: item.id==1,
-          s3: item.id==2,
+          'joinBlock__square--s1': item.id==0,
+          'joinBlock__square--s2': item.id==1,
+          'joinBlock__square--s3': item.id==2,
         }"
         @click="block6Rotate"
       >
@@ -1062,11 +1062,11 @@
             </linearGradient>
           </defs>
         </svg>
-        <p>
+        <p class="bSmallText">
           {{ item.text }}
         </p>
       </div>
-      <a id="block6_btn" class="joinBlock_anim_btn btn_blue">{{ datablock6.btn_text }}</a>
+      <a id="block6_btn" class="btnBlue__joinBlock btnBlue">{{ dataJoinBlock.btn_text }}</a>
     </div>
   </div>
 </template>
@@ -1077,7 +1077,7 @@ export default {
   name: 'JoinBlock',
   data () {
     return {
-      datablock6:
+      dataJoinBlock:
       {
         btn_text: 'Присоединиться',
         squares: [
@@ -1097,34 +1097,42 @@ export default {
       }
     }
   },
+  computed: {
+    mobile () {
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+    }
+  },
   methods: {
-    block6Rotate () {
+    anim_desktop () {
       this.$anime({
-        targets: ['.s1', '.s3'],
-        translateY: '50%',
-        duration: 0
+        targets: ['.joinBlock__square--s1', '.joinBlock__square--s3'],
+        translateY: { value: '50%', duration: 0 },
+        rotate: {
+          value: 360,
+          duration: 700,
+          easing: 'easeInOutSine'
+        }
       })
       this.$anime({
-        targets: '.s2',
-        translateX: '-50%',
-        translateY: '-50%',
-        duration: 0
+        targets: '.joinBlock__square--s2',
+        translateX: { value: '-50%', duration: 0 },
+        translateY: { value: '-50%', duration: 0 },
+        rotate: {
+          value: 360,
+          duration: 700,
+          easing: 'easeInOutSine'
+        }
       })
+      // ====================
       this.$anime({
-        targets: ['.s1', '.s2', '.s3'],
+        targets: '.joinBlock__anim',
         duration: 700,
-        rotate: '1turn',
-        easing: 'easeInOutSine'
-      })
-      this.$anime({
-        targets: '.joinBlock_anim',
-        duration: 700,
-        height: 500,
+        height: '26vw',
         delay: 1000,
         easing: 'linear'
       })
       this.$anime({
-        targets: '.joinBlock_anim_btn',
+        targets: '.btnBlue__joinBlock',
         duration: 700,
         opacity: 1,
         delay: 1000,
@@ -1132,7 +1140,7 @@ export default {
       })
       this.$anime({
         targets: '.joinBlock',
-        marginBottom: 200,
+        marginBottom: '10vw',
         duration: 700,
         delay: 1000,
         easing: 'linear'
@@ -1140,6 +1148,61 @@ export default {
       setTimeout(() => {
         document.getElementById('block6_btn').style.display = 'block'
       }, 1000)
+    },
+    anim_mobile () {
+      this.$anime({
+        targets: ['.joinBlock__square--s1', '.joinBlock__square--s3'],
+        translateY: { value: '-50%', duration: 0 },
+        translateX:
+        [
+          { value: '-50%', duration: 0 },
+          { value: '-100%', duration: 700, delay: 1700, easing: 'easeInOutSine' }
+
+        ],
+        rotate: {
+          value: 360,
+          duration: 700,
+          easing: 'easeInOutSine'
+        }
+      })
+      this.$anime({
+        targets: '.joinBlock__square--s2',
+        translateY: { value: '-50%', duration: 0 },
+        translateX:
+        [
+          { value: '50%', duration: 0 },
+          { duration: 700, value: '100%', delay: 1700, easing: 'easeInOutSine' }
+        ],
+        rotate: {
+          value: 360,
+          duration: 700,
+          easing: 'easeInOutSine',
+          delay: 1
+        }
+      })
+      // ====================
+      this.$anime({
+        targets: '.joinBlock__anim',
+        duration: 700,
+        width: '100%',
+        delay: 1000,
+        easing: 'linear'
+      })
+      this.$anime({
+        targets: '.btnBlue__joinBlock',
+        duration: 700,
+        opacity: 1,
+        delay: 1000,
+        easing: 'linear'
+      })
+      // ====================
+      setTimeout(() => {
+        document.getElementById('block6_btn').style.display = 'block'
+        document.getElementById('anim').style.border = 'none'
+      }, 1000)
+    },
+    block6Rotate () {
+      this.mobile ? this.anim_mobile() : this.anim_desktop()
     }
   }
 }
@@ -1149,8 +1212,12 @@ export default {
   .joinBlock{
     text-align: center;
     margin-bottom: 300/1920*100vw;
-
-    &_anim{
+    @media(max-width:$w-adapt){
+      border-top: 4px $clr-border solid;
+      border-bottom: 4px $clr-border solid;
+      margin-bottom: 0;
+    }
+    &__anim{
       @include makeitflex(column, center);
       margin-top: vwDesk(130);
       background-image: url('~/assets/images/sheets/Main/block6/background1.svg');
@@ -1160,64 +1227,100 @@ export default {
       position: relative;
       height: 0px;
       border-top: black 1px solid;
-      &_square{
-        cursor: pointer;
-        position: absolute;
-        width: vwDesk(240);
-        height: vwDesk(240);
-        font-weight: 600;
-        font-size: $fs-14;
-        line-height: 1.35;
-        text-align: center;
-        text-align: center;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
+      @media(max-width:$w-adapt){
+        background-image: url('~/assets/images/sheets/Main/block6/background_mob.svg');
+        justify-content: flex-end;
+        margin: 0 auto;
+        height: vwMob(884);
+        width: 0px;
+        border-left: 4px $clr-border solid;
+      }
+    }
+    &__square{
+      cursor: pointer;
+      position: absolute;
+      width: vwDesk(240);
+      height: vwDesk(240);
+      font-weight: 600;
+      font-size: $fs-14;
+      line-height: 1.35;
+      text-align: center;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      @media(max-width:$w-adapt){
+        width: vwMob(200);
+        height: vwMob(200);
+      }
+      &:hover{
         &>p{
-          cursor:pointer;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: 60%;
-          transition: color $anim-time $anim-type;
+            background: -webkit-linear-gradient(90deg, #1293B2 10.29%, #03EEDA 26.32%, #00FFE0 86.19%, #1198B4 100%),linear-gradient(0deg, #FFFFFF, #FFFFFF);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         & .squareHover{
-          opacity: 0;
-          transition: opacity $anim-time $anim-type;
-        }
-        &:hover{
-          &>p{
-             background: -webkit-linear-gradient(90deg, #1293B2 10.29%, #03EEDA 26.32%, #00FFE0 86.19%, #1198B4 100%),linear-gradient(0deg, #FFFFFF, #FFFFFF);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          & .squareHover{
-            opacity: 1;
-          }
+          opacity: 1;
         }
       }
-      &_btn{
-        padding: 15px 130px;
-        opacity: 0;
-        margin: 0 auto;
-        color:$clr-text-1;
-        display: none;
-      }
-      & .s1{
+      &--s1{
         bottom: 0;
         left: 150/1920*100%;
         transform: translateY(50%);
+        @media(max-width:$w-adapt){
+          left: 0;
+          top: 1/5*100%;
+          transform: translate(-50%,-50%);
+        }
       }
-      & .s2{
+      &--s2{
         top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
+        @media(max-width:$w-adapt){
+          left: auto;
+          right: 0;
+          top: 50%;
+          transform: translate(50%,-50%);
+        }
       }
-      & .s3{
+      &--s3{
         bottom: 0;
         right: 150/1920*100%;
         transform: translateY(50%);
+        @media(max-width:$w-adapt){
+          right: auto;
+          bottom: auto;
+          left: 0;
+          top: 4/5*100%;
+          transform: translate(-50%,-50%);
+        }
+      }
+      &>p{
+        cursor:pointer;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        transition: color $anim-time $anim-type;
+      }
+      & .squareHover{
+        opacity: 0;
+        transition: opacity $anim-time $anim-type;
       }
     }
+
+    .btnBlue__joinBlock{
+      padding: vwDesk(15) vwDesk(130);
+      opacity: 0;
+      margin: 0 auto;
+      color:$clr-text-1;
+      display: none;
+      @media(max-width:$w-adapt){
+margin-bottom: vwMob(250);
+      padding: vwMob(10) vwMob(25);
+      }
+    }
+
   }
 </style>

@@ -1,23 +1,5 @@
-.btn_nav {
-  margin-right: vwDesk(40);
-  height: fit-content;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-style: normal;
-  font-family: "Manrope", sans-serif;
-  font-size: $fs-14;
-  line-height: 19/14 * 100%;
-  font-weight: 600;
-  color: #fff;
-  transition: $anim-time linear;
-  text-align: center;
-  &:hover {
-    color: #1cb0ff;
-    cursor: pointer;
-  }
-}
 
-.btn_blue {
+.btnBlue {
   border-radius: 10px;
   background: linear-gradient(180deg, #1cb0ff 0%, #0a87fa 100%);
   transition: box-shadow $anim-time linear, color $anim-time linear;
@@ -28,7 +10,7 @@
     box-shadow: 0px 4px 20px rgba(19, 155, 253, 0.8);
   }
 }
-.btn_apple {
+.btnApple {
   border-radius: 10px;
   background: linear-gradient(174.33deg, #29649b 2.19%, #00fddf 99.09%);
   transition: box-shadow $anim-time linear, color $anim-time linear;
@@ -39,13 +21,19 @@
     box-shadow: 0px 4px 20px rgba(0, 253, 223, 0.8);
   }
 }
-.btn_reg {
-  padding: 15px 33px;
-}
+
 
 .pageImgHead {
-  border-radius: 40px;
-  margin: 30px auto 65px;
+  border-radius: vwDesk(40);
+  margin: vwDesk(30) auto vwDesk(65);
+  width: vwDesk(1840);
+  height: vwDesk(515);
+  @media(max-width:$w-adapt){
+    border-radius: vwMob(20);
+    margin: vwMob(70) auto vwMob(35);
+    width: vwMob(340);
+    height: vwMob(200);
+  }
 }
 
 .transparent {
