@@ -1,46 +1,65 @@
 <template>
   <div>
-    <div class="aboutUsPage">
-      <div class="aboutUsPage_block1">
-        <div class="aboutUsPage_block1_section center">
-          <p class="title">
+    <div class="about">
+      <div class="b1">
+        <div class="section section--center">
+          <p class="bBigTitle section__bBigTitle " :class="{'section__bBigTitle--fs18m':mobile}">
             {{ datablock1.block1.title }}
           </p>
-          <p class="text">
+          <p class="bSubTitle section__bSubTitle ">
             {{ datablock1.block1.text }}
           </p>
         </div>
-        <div class="aboutUsPage_block1_section right">
-          <p class="title">
+        <div class="section" :class="{'section--right':!mobile, 'section--center':mobile, 'section--marginB':mobile}">
+          <p class="bBigTitle section__bBigTitle " :class="{'section__bBigTitle--fs18m':mobile}">
             {{ datablock1.block2.title }}
           </p>
-          <p class="text">
+          <p class="bSubTitle section__bSubTitle ">
             {{ datablock1.block2.text }}
           </p>
         </div>
-        <div class="aboutUsPage_block1_section left">
-          <p class="text">
+        <div class="section" :class="{'section--left':!mobile, 'section--center':mobile, 'section--marginB':mobile}">
+          <p class="bSubTitle section__bSubTitle ">
             {{ datablock1.block3.subtitle }}
           </p>
-          <p class="title">
+          <p class="bBigTitle section__bBigTitle " :class="{'section__bBigTitle--fs18m':mobile}">
             {{ datablock1.block3.title }}
           </p>
-          <p class="text">
+          <p class="bSubTitle section__bSubTitle ">
             {{ datablock1.block3.text1 }}
           </p>
-          <p class="text">
+          <p class="bSubTitle section__bSubTitle ">
             {{ datablock1.block3.text2 }}
           </p>
         </div>
-        <div class="aboutUsPage_block1_svg_cubes">
-          <v-img :lazy-src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')" :src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')" alt="" max-height="43vw" max-width="100vw" />
+        <div class="b1__cubes">
+          <v-img
+            v-if="!mobile"
+            :lazy-src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')"
+            :src="require('~/assets/images/sheets/AboutUs/block1/cubes.svg')"
+            alt=""
+            max-height="100%"
+            max-width="100%"
+            contain
+            position="left center"
+          />
+          <v-img
+            v-if="mobile"
+            :lazy-src="require('~/assets/images/sheets/AboutUs/block1/cubes_mob.svg')"
+            :src="require('~/assets/images/sheets/AboutUs/block1/cubes_mob.svg')"
+            alt=""
+            max-height="100%"
+            max-width="100%"
+            contain
+            position="left center"
+          />
         </div>
-        <div id="svg_blocks" class="aboutUsPage_block1_svg_blocks">
-          <div class="aboutUsPage_block1_svg_blocks_col">
-            <div class="num">
-              {{ datablock1.svg_blocks[0].count }} %
+        <div id="svg_blocks" class="percent b1__percent">
+          <div v-for="percent in datablock1.svg_blocks" :key="percent.target" class="percent__col">
+            <div class="bTitle percent__bTitle percent__bTitle--textFeatures">
+              {{ percent.count }} %
             </div>
-            <svg id="svgBlock1" class="svg_block" viewBox="0 0 86 447">
+            <svg :id="percent.target" class="percent__svg" viewBox="0 0 86 447">
               <mask
                 id="mask0_550_3"
                 style="mask-type:alpha"
@@ -282,8 +301,8 @@
               </defs>
             </svg>
           </div>
-          <div class="aboutUsPage_block1_svg_blocks_col">
-            <div class="num">
+          <!-- <div class="percent__col">
+            <div class="percent__num">
               {{ datablock1.svg_blocks[1].count }} %
             </div>
             <svg id="svgBlock2" class="svg_block" viewBox="0 0 86 447">
@@ -528,8 +547,8 @@
               </defs>
             </svg>
           </div>
-          <div class="aboutUsPage_block1_svg_blocks_col">
-            <div class="num">
+          <div class="percent__col">
+            <div class="percent__num">
               {{ datablock1.svg_blocks[2].count }} %
             </div>
             <svg id="svgBlock3" class="svg_block" viewBox="0 0 86 447">
@@ -774,8 +793,8 @@
               </defs>
             </svg>
           </div>
-          <div class="aboutUsPage_block1_svg_blocks_col">
-            <div class="num">
+          <div class="percent__col">
+            <div class="percent__num">
               {{ datablock1.svg_blocks[3].count }} %
             </div>
             <svg id="svgBlock4" class="svg_block" viewBox="0 0 86 447">
@@ -1020,8 +1039,8 @@
               </defs>
             </svg>
           </div>
-          <div class="aboutUsPage_block1_svg_blocks_col">
-            <div class="num">
+          <div class="percent__col">
+            <div class="percent__num">
               {{ datablock1.svg_blocks[4].count }} %
             </div>
             <svg id="svgBlock5" class="svg_block" viewBox="0 0 86 447">
@@ -1265,57 +1284,59 @@
                 </linearGradient>
               </defs>
             </svg>
-          </div>
+          </div> -->
         </div>
       </div>
-      <div class="aboutUsPage_block2">
-        <div class="aboutUsPage_block2_col">
-          <p class="soros">
+      <div class="b2">
+        <div class="b2__col">
+          <p class="bBigTitle b2__bBigTitle" :class="{'b2__bBigTitle--fs18m':mobile}">
             {{ datablock2.soros }}
           </p>
         </div>
-        <v-img max-height="30vw" lazy-src="/assets/images/sheets/AboutUs/block2/soros.png" :src="require('~/assets/images/sheets/AboutUs/block2/soros.png')" />
-        <div class="aboutUsPage_block2_col">
-          <div class="citation">
+        <v-img v-if="!mobile" max-height="30vw" lazy-src="/assets/images/sheets/AboutUs/block2/soros.png" :src="require('~/assets/images/sheets/AboutUs/block2/soros.png')" />
+        <div class="b2__col">
+          <div class="bTitle b2__bTitle">
             {{ datablock2.text }}
-            <svg class="svg_citation_1" viewBox="0 0 48 33">
+            <svg class="b2__svg b2__svg--1" viewBox="0 0 48 33">
               <path d="M20.2232 32.0088L34.611 0.00878906H47.5L37.3686 32.0088H20.2232ZM0.5 32.0088L15.0676 0.00878906H27.9566L17.7054 32.0088H0.5Z" fill="#00FDDF" />
             </svg>
-            <svg class="svg_citation_2" viewBox="0 0 47 34">
+            <svg class="b2__svg b2__svg--2" viewBox="0 0 47 34">
               <path d="M19.5434 33.3438L29.7946 0.34375H47L32.4324 33.3438H19.5434ZM0 33.3438L10.1314 0.34375H27.2768L12.889 33.3438H0Z" fill="#00FDDF" />
             </svg>
           </div>
         </div>
+        <v-img v-if="mobile" lazy-src="/assets/images/sheets/AboutUs/block2/soros.png" :src="require('~/assets/images/sheets/AboutUs/block2/soros.png')" />
       </div>
-      <div class="aboutUsPage_block3">
-        <div class="aboutUsPage_block3_col">
-          <div class="aboutUsPage_block3_col_block">
-            <p class="title">
+      <div class="b3">
+        <div class="b3__col">
+          <div class="b3__block">
+            <p class="bBigTitle b3__bBigTitle ">
               {{ datablock3.block[0].title }}
             </p>
-            <p class="text">
+            <p class="bSubTitle b3__bSubTitle text">
               {{ datablock3.block[0].text }}
             </p>
           </div>
           <v-img lazy-src="/assets/images/sheets/AboutUs/block3/photoSmall.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoSmall.png')" />
         </div>
-        <div class="aboutUsPage_block3_col">
-          <v-img lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
+        <div class="b3__col">
+          <v-img v-if="!mobile" lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
         </div>
-        <div class="aboutUsPage_block3_col">
-          <div class="aboutUsPage_block3_col_block">
-            <p class="title">
+        <div class="b3__col">
+          <div class="b3__block">
+            <p class="bBigTitle b3__bBigTitle">
               {{ datablock3.block[1].title }}
             </p>
-            <p class="text">
+            <p class="bSubTitle b3__bSubTitle">
               {{ datablock3.block[1].text }}
             </p>
           </div>
-          <div class="aboutUsPage_block3_col_block">
-            <p class="title">
+          <v-img v-if="mobile" lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
+          <div class="b3__block">
+            <p class="bBigTitle b3__bBigTitle ">
               {{ datablock3.block[2].title }}
             </p>
-            <p class="text">
+            <p class="bSubTitle b3__bSubTitle">
               {{ datablock3.block[2].text }}
             </p>
           </div>
@@ -1365,27 +1386,37 @@ export default {
           {
             value: 92,
             count: 0,
-            scaleY: '22vw'
+            scaleY: '22vw',
+            scaleYMob: '70vw',
+            target: 'svgBlock1'
           },
           {
             value: 72,
             count: 0,
-            scaleY: '20vw'
+            scaleY: '20vw',
+            scaleYMob: '65vw',
+            target: 'svgBlock2'
           },
           {
             value: 82,
             count: 0,
-            scaleY: '18vw'
+            scaleY: '18vw',
+            scaleYMob: '60vw',
+            target: 'svgBlock3'
           },
           {
             value: 76,
             count: 0,
-            scaleY: '16vw'
+            scaleY: '16vw',
+            scaleYMob: '55vw',
+            target: 'svgBlock4'
           },
           {
             value: 54,
             count: 0,
-            scaleY: '14vw'
+            scaleY: '14vw',
+            scaleYMob: '50vw',
+            target: 'svgBlock5'
           }
         ]
       },
@@ -1413,7 +1444,11 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    mobile () {
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+    }
+  },
   watch: {},
   created () {},
   mounted () {
@@ -1426,16 +1461,16 @@ export default {
     block1ScrollEvent (event) {
       if ((document.querySelector('#svg_blocks').getBoundingClientRect().top <= 500) && (this.datablock1.svg_blocks[0].count === 0)) {
         this.$anime({
-          targets: ['.num'],
+          targets: ['.percent__bTitle'],
           opacity: [0, 1],
           duration: 1000
         })
-        this.$anime({
-          targets: ['#svgBlock1', '#svgBlock2', '#svgBlock3', '#svgBlock4', '#svgBlock5'],
-          height: 0,
-          opacity: 1,
-          scaleY: 1
-        })
+        // this.$anime({
+        //   targets: ['#svgBlock1', '#svgBlock2', '#svgBlock3', '#svgBlock4', '#svgBlock5'],
+        //   height: 0,
+        //   opacity: 1,
+        //   scaleY: 1
+        // })
         this.datablock1.svg_blocks.forEach((item, idx) => {
           const obj = { n: item.count }
           this.$anime({
@@ -1448,38 +1483,51 @@ export default {
               item.count = obj.n
             }
           })
+          this.$anime({
+            targets: '#' + item.target,
+            height: 0,
+            opacity: 1,
+            scaleY: 1
+          })
+          this.$anime({
+            targets: '#' + item.target,
+            height: [0, this.mobile ? item.scaleYMob : item.scaleY],
+            duration: 1000,
+            easing: 'easeInOutSine'
+          })
+          console.log(item.name, this.mobile ? item.scaleYMob : item.scaleY)
         })
-        this.$anime({
-          targets: '#svgBlock1',
-          height: [0, this.datablock1.svg_blocks[0].scaleY],
-          duration: 1000,
-          easing: 'easeInOutSine'
-        })
-        this.$anime({
-          targets: '#svgBlock2',
-          // scaleY: [0, this.datablock1.svg_blocks[1].scaleY],
-          height: [0, this.datablock1.svg_blocks[1].scaleY],
-          duration: 1000,
-          easing: 'easeInOutSine'
-        })
-        this.$anime({
-          targets: '#svgBlock3',
-          height: [0, this.datablock1.svg_blocks[2].scaleY],
-          duration: 1000,
-          easing: 'easeInOutSine'
-        })
-        this.$anime({
-          targets: '#svgBlock4',
-          height: [0, this.datablock1.svg_blocks[3].scaleY],
-          duration: 1000,
-          easing: 'easeInOutSine'
-        })
-        this.$anime({
-          targets: '#svgBlock5',
-          height: [0, this.datablock1.svg_blocks[4].scaleY],
-          duration: 1000,
-          easing: 'easeInOutSine'
-        })
+        // this.$anime({
+        //   targets: '#svgBlock1',
+        //   height: [0, this.datablock1.svg_blocks[0].scaleY],
+        //   duration: 1000,
+        //   easing: 'easeInOutSine'
+        // })
+        // this.$anime({
+        //   targets: '#svgBlock2',
+        //   // scaleY: [0, this.datablock1.svg_blocks[1].scaleY],
+        //   height: [0, this.datablock1.svg_blocks[1].scaleY],
+        //   duration: 1000,
+        //   easing: 'easeInOutSine'
+        // })
+        // this.$anime({
+        //   targets: '#svgBlock3',
+        //   height: [0, this.datablock1.svg_blocks[2].scaleY],
+        //   duration: 1000,
+        //   easing: 'easeInOutSine'
+        // })
+        // this.$anime({
+        //   targets: '#svgBlock4',
+        //   height: [0, this.datablock1.svg_blocks[3].scaleY],
+        //   duration: 1000,
+        //   easing: 'easeInOutSine'
+        // })
+        // this.$anime({
+        //   targets: '#svgBlock5',
+        //   height: [0, this.datablock1.svg_blocks[4].scaleY],
+        //   duration: 1000,
+        //   easing: 'easeInOutSine'
+        // })
       }
     }
   }
@@ -1487,189 +1535,251 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .aboutUsPage{
-    &_block1{
-      @include makeitflex(column, flex-start);
-      background-image: url('~/assets/images/sheets/AboutUs/block1/background.svg');
-      background-size: contain;
-      padding: 100px 40px 70px;
-      margin-top: 190px;
-      z-index: 1;
-      position: relative;
-      &_section{
-        font-family: 'Manrope', sans-serif !important;
-        & .title{
-          font-style: normal !important;
-          font-weight: bold !important;
-          font-size: $fs-48 !important;
-          line-height: 1 !important;
-
-          letter-spacing: 0.05em;
-          margin-bottom: 45px;
-        z-index: 2;
-        }
-        & .text{
-          font-style: normal;
-          font-weight: normal;
-          font-size: $fs-24;
-          line-height: 1.25;
-          /* or 30px */
-
-          letter-spacing: 0.05em;
-          margin-bottom: 20px;
-        z-index: 2;
-        }
-      }
-      .center{
+  .about{
+    .section{
+       &--center{
         text-align: center;
         max-width: vwDesk(1283);
         margin: 0 auto vwDesk(200);
       }
-      .left{
+      &--left{
         text-align: left;
         max-width: vwDesk(990);
+        @media(max-width:$w-adapt){
+        }
       }
-      .right{
+      &--right{
         text-align: left;
         max-width: vwDesk(880);
-        margin-bottom: vwDesk(470);
+        margin-bottom: vwDesk(500);
         margin-left: auto;
-      }
-      &_svg{
-        &_cubes{
-          position: absolute;
-          left: 0;
-          top: 400px;
-          height: vwDesk(824);
-          z-index: -1;
+        @media(max-width:$w-adapt){
+
         }
-        &_blocks{
-          @include makeitflex(row, flex-start);
-          width: vwDesk(720);
-          position: absolute;
-          bottom: 60px;
-          right: 50px;
-          &_col{
-            @include makeitflex(column, flex-end);
-            margin-right: vwDesk(48);
-            .num{
-              font-family: 'Manrope', sans-serif !important;
-              text-align: center;
-              font-style: normal !important;
-              font-weight: 600 !important;
-              font-size: $fs-36 !important;
-              line-height: 49/36*1 !important;
-              font-feature-settings: 'pnum' on, 'lnum' on;
-              background: linear-gradient(176.05deg, #FFFFFF 34.22%, #00FDDF 101.54%, #29649B 121.84%);
-              background-clip: text;
-              -webkit-text-fill-color: transparent;
-              margin-bottom: vwDesk(60);
-              opacity: 0;
-            }
-            .svg_block{
-              transform-origin: bottom;
-              opacity: 0;
-              transform: scaleY(0);
-              // height: 0;
-            }
-          }
+
+      }
+      &--marginB{
+        margin-bottom: vwMob(340);
+      }
+      // &--marginB3{
+      //   margin-bottom: vwMob(340);
+
+      // }
+      // font-family: 'Manrope', sans-serif !important;
+      // & .title{
+      &__bBigTitle{
+        // font-style: normal !important;
+        font-weight: bold !important;
+        // font-size: $fs-48 !important;
+        // line-height: 1 !important;
+
+        // letter-spacing: 0.05em;
+        margin-bottom: vwDesk(45);
+        z-index: 2;
+        &--fs18m{
+          font-size: $fs-18-m;
+        }
+      }
+      &__bSubTitle{
+      // font-style: normal;
+      // font-weight: normal;
+      // font-size: $fs-24;
+      // line-height: 1.25;
+      /* or 30px */
+
+      // letter-spacing: 0.05em;
+      margin-bottom: vwDesk(20);
+      z-index: 2;
+      }
+    }
+    .b1{
+      @include makeitflex(column, flex-start);
+      background-image: url('~/assets/images/sheets/AboutUs/block1/background.svg');
+      background-size: contain;
+      padding: vwDesk(100) vwDesk(40) vwDesk(70);
+      margin-top: vwDesk(190);
+      z-index: 1;
+      position: relative;
+      @media(max-width:$w-adapt){
+        padding: vhMob(48)+vhMob(20) 0 0;
+        margin-top: 0;
+        background-image: url('~/assets/images/sheets/AboutUs/block1/background_mob.svg');
+        background-size: contain;
+        background-position: top center;
+      }
+      &__percent{
+        width: vwDesk(720);
+        position: absolute;
+        bottom: vwDesk(60);
+        right: vwDesk(50);
+        @media(max-width:$w-adapt){
+          width: vwMob(350);
+          right: 50%;
+          transform: translateX(50%);
+        }
+      }
+      &__cubes{
+        position: absolute;
+        left: 0;
+        top: vwDesk(400);
+        height: vwDesk(824);
+        z-index: -1;
+        @media(max-width:$w-adapt){
+          top: vwMob(620);
+          height: vwMob(260);
+          left: 50%;
+          transform: translateX(-50%);
+          width: vwMob(335);
         }
       }
     }
-    &_block2{
-      @include makeitflex(row, space-between);
+    .percent {
+      @include makeitflex(row, flex-start);
+      &__svg{
+        transform-origin: bottom;
+        opacity: 0;
+        transform: scaleY(0);
+        @media(max-width:$w-adapt){
+
+        }
+      }
+      &__bTitle{
+        // font-family: 'Manrope', sans-serif !important;
+        text-align: center;
+        // font-style: normal !important;
+        font-weight: 600 !important;
+        // font-size: $fs-36 !important;
+        // line-height: 49/36*1 !important;
+        margin-bottom: vwDesk(60);
+        opacity: 0;
+        &--textFeatures{
+          font-feature-settings: 'pnum' on, 'lnum' on;
+          background: linear-gradient(176.05deg, #FFFFFF 34.22%, #00FDDF 101.54%, #29649B 121.84%);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+      &__col{
+        @include makeitflex(column, flex-end);
+        margin-right: vwDesk(48);
+        @media(max-width:$w-adapt){
+          width: 20%;
+        }
+      }
+    }
+    .b2{
       background-image: url('~/assets/images/sheets/AboutUs/block2/background.svg');
       background-size: cover;
       background-position-y: bottom;
+      @include makeitflex(row, space-between);
       padding: 0 vwDesk(120);
-      &_col{
+      @media(max-width:$w-adapt){
+        @include makeitflex(column, flex-start);
+      }
+      &__col{
         @include makeitflex(column, flex-start);
         position: relative;
         padding: 6vw 0 0;
-        & .soros{
-          font-family: 'Raleway', sans-serif !important;
-          font-style: normal !important;
-          font-weight: 800 !important;
-          font-size: $fs-48 !important;
-          line-height: 1.4;
-        }
-        & .citation{
-          position: relative;
-          font-family: 'Raleway', sans-serif !important;
-          font-style: normal !important;
-          font-weight: bold !important;
-          font-size: $fs-36 !important;
-          line-height: 1.4;
-          width: vwDesk(600);
-          /* or 50px */
-          text-align: right;
-          & .svg_citation_1{
-            position: absolute;
-            left: 0;
-            top: 0;
-            transform: translate(250%,-100%);
-            width: vwDesk(18.5);
-          }
-          & .svg_citation_2{
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            transform: translate(100%, 100% );
-            width: vwDesk(18.5);
-          }
+      }
+      &__bBigTitle{
+        // font-family: 'Raleway', sans-serif !important;
+        // font-style: normal !important;
+        // font-weight: 800 !important;
+        // font-size: $fs-48 !important;
+        // line-height: 1.4;
+        &--fs18m{
+          font-size: $fs-18-m;
         }
       }
+      &__bTitle{
+        position: relative;
+        // font-family: 'Raleway', sans-serif !important;
+        // font-style: normal !important;
+        // font-weight: bold !important;
+        // font-size: $fs-36 !important;
+        line-height: 1.4;
+        width: vwDesk(600);
+        /* or 50px */
+        text-align: right;
+        @media(max-width:$w-adapt){
 
+          width: 100%;
+        }
+      }
+      &__svg{
+        position: absolute;
+        width: vwDesk(20);
+        @media(max-width:$w-adapt){
+
+          width: vwMob(20);
+        }
+        &--1{
+          left: 0;
+          top: 0;
+          transform: translate(200%,-100%);
+          @media(max-width:$w-adapt){
+            transform: translate(-40%,-100%);
+          }
+        }
+        &--2{
+          right: 0;
+          bottom: 0;
+          transform: translate(100%, 100% );
+        }
+      }
     }
-    &_block3{
+    .b3{
       @include makeitflex(row,flex-start);
-      margin-bottom: 40px;
-      &_col{
+      margin-bottom: vwDesk(40);
+      @media(max-width:$w-adapt){
+        @include makeitflex(column,flex-start);
+      }
+      &__col{
         @include makeitflex(column, flex-start);
-        width: 100/3*100%;
+        width: 1/3*100%;
         border-bottom: 4px solid #14161B;
         border-top: 4px solid #14161B;
         border-left: 2px solid #14161B;
         border-right: 2px solid #14161B;
-        &_block{
+        @media(max-width:$w-adapt){
           width: 100%;
-          padding: vwDesk(65);
-          border-bottom: 4px solid #14161B;
-          flex: 1;
-          &:last-child{
-            border-bottom: 0;
-          }
-          & .title{
-            font-family: 'Manrope', sans-serif !important;
-            font-style: normal !important;
-            font-weight: bold !important;
-            font-size: $fs-48  !important;
-            line-height: 1;
-            /* or 47px */
+        }
+      }
+      &__bBigTitle{
+        // font-family: 'Manrope', sans-serif !important;
+        // font-style: normal !important;
+        // font-weight: bold !important;
+        // font-size: $fs-48  !important;
+        // line-height: 1;
+        /* or 47px */
 
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-          }
-          & .text{
-            font-family: 'Manrope', sans-serif !important;
-            font-style: normal !important;
-            font-weight: 500 !important;
-            font-size: $fs-24  !important;
-            line-height: 1;
-            /* or 23px */
+        // letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: vwDesk(25);
+        }
+      &__bSubTitle{
+        // font-family: 'Manrope', sans-serif !important;
+        // font-style: normal !important;
+        // font-weight: 500 !important;
+        // font-size: $fs-24  !important;
+        // line-height: 1;
+        /* or 23px */
 
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-          }
-          // & .img{
-          //   width: 100%;
-          // }
+        // letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      &__block{
+        width: 100%;
+        padding: vwDesk(65);
+        border-bottom: 4px solid #14161B;
+        flex: 1;
+        &:last-child{
+          border-bottom: 0;
         }
       }
     }
     .joinblock{
-      margin-bottom: 150px;
+      margin-bottom: vwDesk(150);
     }
   }
 </style>
