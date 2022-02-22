@@ -1309,8 +1309,34 @@
       </div>
       <div class="b3">
         <div class="b3__col">
-          <div class="b3__block">
-            <p class="bBigTitle b3__bBigTitle ">
+          <div class="b3__block" :class="{'b3__block--fs18m':mobile, 'b3__block--padding1m':mobile,'b3__block--borderNone':mobile}">
+            <svg v-if="mobile" class="b3__svg" viewBox="0 0 56 198">
+              <g filter="url(#filter0_i_406_7041)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M-1.73017e-05 198L3.99998 198L3.99997 62.3013L55.5 1.5L51.6385 0.0915787L0.00253416 60.6148L0.827363 61.141L-2.92786e-05 61L-1.73017e-05 198Z" fill="#14161B" />
+              </g>
+              <defs>
+                <filter
+                  id="filter0_i_406_7041"
+                  x="0"
+                  y="0.0917969"
+                  width="55.5"
+                  height="198.908"
+                  filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB"
+                >
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                  <feOffset dy="1" />
+                  <feGaussianBlur stdDeviation="1" />
+                  <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+                  <feBlend mode="normal" in2="shape" result="effect1_innerShadow_406_7041" />
+                </filter>
+              </defs>
+            </svg>
+
+            <p class="bBigTitle b3__bBigTitle " :class="{'b3__bBigTitle--fs18m':mobile}">
               {{ datablock3.block[0].title }}
             </p>
             <p class="bSubTitle b3__bSubTitle text">
@@ -1319,21 +1345,21 @@
           </div>
           <v-img lazy-src="/assets/images/sheets/AboutUs/block3/photoSmall.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoSmall.png')" />
         </div>
-        <div class="b3__col">
+        <div v-if="!mobile" class="b3__col">
           <v-img v-if="!mobile" lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
         </div>
         <div class="b3__col">
-          <div class="b3__block">
-            <p class="bBigTitle b3__bBigTitle">
+          <div class="b3__block" :class="{'b3__block--borderNone':mobile}">
+            <p class="bBigTitle b3__bBigTitle" :class="{'b3__bBigTitle--fs18m':mobile}">
               {{ datablock3.block[1].title }}
             </p>
             <p class="bSubTitle b3__bSubTitle">
               {{ datablock3.block[1].text }}
             </p>
           </div>
-          <v-img v-if="mobile" lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" />
+          <v-img v-if="mobile" lazy-src="/assets/images/sheets/AboutUs/block3/photoBig.png" :src="require('~/assets/images/sheets/AboutUs/block3/photoBig.png')" :class="{'b3__col--ml-m':mobile}" />
           <div class="b3__block">
-            <p class="bBigTitle b3__bBigTitle ">
+            <p class="bBigTitle b3__bBigTitle " :class="{'b3__bBigTitle--fs18m':mobile}">
               {{ datablock3.block[2].title }}
             </p>
             <p class="bSubTitle b3__bSubTitle">
@@ -1644,12 +1670,8 @@ export default {
         }
       }
       &__bTitle{
-        // font-family: 'Manrope', sans-serif !important;
         text-align: center;
-        // font-style: normal !important;
         font-weight: 600 !important;
-        // font-size: $fs-36 !important;
-        // line-height: 49/36*1 !important;
         margin-bottom: vwDesk(60);
         opacity: 0;
         &--textFeatures{
@@ -1682,21 +1704,12 @@ export default {
         padding: 6vw 0 0;
       }
       &__bBigTitle{
-        // font-family: 'Raleway', sans-serif !important;
-        // font-style: normal !important;
-        // font-weight: 800 !important;
-        // font-size: $fs-48 !important;
-        // line-height: 1.4;
         &--fs18m{
           font-size: $fs-18-m;
         }
       }
       &__bTitle{
         position: relative;
-        // font-family: 'Raleway', sans-serif !important;
-        // font-style: normal !important;
-        // font-weight: bold !important;
-        // font-size: $fs-36 !important;
         line-height: 1.4;
         width: vwDesk(600);
         /* or 50px */
@@ -1733,48 +1746,64 @@ export default {
       margin-bottom: vwDesk(40);
       @media(max-width:$w-adapt){
         @include makeitflex(column,flex-start);
+        margin-bottom: 0;
+      }
+      &__svg{
+        height: 100%;
+        left: vwMob(45);
+        position: absolute;
+        top: 0;
       }
       &__col{
         @include makeitflex(column, flex-start);
         width: 1/3*100%;
-        border-bottom: 4px solid #14161B;
-        border-top: 4px solid #14161B;
-        border-left: 2px solid #14161B;
-        border-right: 2px solid #14161B;
+        border-bottom: 4px solid $clr-border;
+        border-top: 4px solid $clr-border;
+        border-left: 2px solid $clr-border;
+        border-right: 2px solid $clr-border;
         @media(max-width:$w-adapt){
           width: 100%;
+          border-bottom: 0;
+        }
+        &--ml-m{
+          margin-left: vwMob(25);
         }
       }
       &__bBigTitle{
-        // font-family: 'Manrope', sans-serif !important;
-        // font-style: normal !important;
-        // font-weight: bold !important;
-        // font-size: $fs-48  !important;
-        // line-height: 1;
-        /* or 47px */
-
-        // letter-spacing: 0.05em;
         text-transform: uppercase;
         margin-bottom: vwDesk(25);
+        @media(max-width:$w-adapt){
+          margin-bottom: vwMob(25);
+        }
+          &--fs18m{
+            font-size: $fs-18-m;
+          }
+
         }
       &__bSubTitle{
-        // font-family: 'Manrope', sans-serif !important;
-        // font-style: normal !important;
-        // font-weight: 500 !important;
-        // font-size: $fs-24  !important;
-        // line-height: 1;
-        /* or 23px */
-
-        // letter-spacing: 0.05em;
         text-transform: uppercase;
+        @media(max-width:$w-adapt){
+          font-weight: normal;
+        }
+
       }
       &__block{
         width: 100%;
         padding: vwDesk(65);
-        border-bottom: 4px solid #14161B;
+        border-bottom: 4px solid $clr-border;
         flex: 1;
+        position: relative;
         &:last-child{
           border-bottom: 0;
+        }
+        @media(max-width:$w-adapt){
+          padding: vwMob(25);
+        }
+        &--padding1m{
+          padding-left: vwMob(100);
+        }
+        &--borderNone{
+          border-bottom: none;
         }
       }
     }
